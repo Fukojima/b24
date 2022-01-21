@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import PlanCard from "../Components/PlanCard/PlanCard";
 import { Grid,Box, Typography } from "@mui/material";
 
+
 function Plans() {
 
   return (

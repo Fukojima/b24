@@ -99,8 +99,9 @@ export default function BasicTabs() {
           </Grid>
         </Grid>
       </Box>
-      <TabPanel value={value} index={0}>
-<MainDashboard/>
+      <TabPanel value={value} index={0} >
+        <Grid sx={{marginLeft:"5rem"}}><MainDashboard /></Grid>
+
 
       </TabPanel>
       <TabPanel value={value} index={1}>
