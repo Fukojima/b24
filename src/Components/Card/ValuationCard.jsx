@@ -11,7 +11,7 @@ export default function ValuationCard({title, value, color, up,down}) {
   return (
     <Card  sx={{ maxWidth: 345, marginTop:"5rem"}} >
       {up?(<Grid style={{display:"flex", position:"absolute", marginLeft:"10rem"}}><img src={envio} alt="crescimento" height="30rem" /></Grid>):""}
-      <CardActionArea>
+
         <CardContent>
           <Typography  variant="h10" component="div">
        {title}
@@ -21,7 +21,7 @@ export default function ValuationCard({title, value, color, up,down}) {
       {value}
           </Typography>
         </CardContent>
-      </CardActionArea>
+
     </Card>
   );
 }

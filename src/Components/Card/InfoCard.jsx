@@ -21,7 +21,7 @@ const bull = (
 
 export default function InfoCard() {
   return (
-    <Card
+    <Card item
       sx={{
         width: "22rem",
         height: "32rem",

@@ -8,9 +8,7 @@ import logo from "../../assets/logo-black.png";
 import PopupConnection from "../PopupConnection/PopupConnection";
 import ProfileMenu from "../../Components/ProfileMenu/ProfileMenu";
 import MainDashboard from "../../Components/MainDashboard/MainDashboard";
-import LineGraphic from "../Graphics/LineGraphic";
-import testData from "../../service/testDatas.js";
-import SimpleGraph from "../Graphics/SimpleGraph";
+import Robots from "../../Pages/Robots"
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -72,6 +70,8 @@ export default function BasicTabs() {
     },
   ];
   const handleChange = (event, newValue) => {
+    if (newValue == 0){    window.location.reload()}
+
     setValue(newValue);
   };
 
@@ -108,7 +108,7 @@ export default function BasicTabs() {
         <Plans />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      <Robots/>
       </TabPanel>
     </Box>
   );

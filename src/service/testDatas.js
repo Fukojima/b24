@@ -39,33 +39,22 @@ module.exports = {
     ],
   
     oneLineChartData: [
-      {
-        pacientes: 70,
-      },
-      {
-        pacientes: 55,
-      },
-      {
-        pacientes: 68,
-      },
-      {
-        pacientes: 21,
-      },
-      {
-        pacientes: 90,
-      },
-      {
-        pacientes: 44,
-      },
-      {
-        pacientes: 30,
-      },
-      {
-        pacientes: 51,
-      },
-      {
-        pacientes: 66,
-      },
+      { name: '01/01', uv: 4000 },
+  { name: '02/01', uv: 3000 },
+  { name: '03/01', uv: 2000 },
+  { name: '04/01', uv: 1890 },
+  { name: '05/01', uv: 2390 },
+  { name: '06/01', uv: 3490 },
+  { name: '07/01', uv: 900 },
+  { name: '08/01', uv: 5000 },
+  { name: '09/01', uv: 3000 },
+  { name: '10/01', uv: 2990 },
+  { name: '11/01', uv: 3190 },
+  { name: '12/01', uv: 3490 },
+  { name: '13/01', uv: 3490 },
+  { name: '14/01', uv: 3500 },
+  { name: '15/01', uv: 5000 },
+  { name: '16/01', uv: 4890 },
     ],
   
     barChartData: [

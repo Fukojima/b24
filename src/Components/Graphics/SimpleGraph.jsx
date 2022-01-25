@@ -1,6 +1,12 @@
 import React, { PureComponent } from 'react';
 import Card from '@mui/material/Card';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Area,AreaChart, XAxis, YAxis, CartesianGrid, Tooltip,  ResponsiveContainer } from 'recharts';
+
+
+
+
+
+
 
 const data = [
   { name: '01/01', uv: 4000 },
@@ -19,7 +25,7 @@ const data = [
   { name: '14/01', uv: 3500 },
   { name: '15/01', uv: 5000 },
   { name: '16/01', uv: 4890 },
-  { name: '17/01', uv: 5390 },
+  
 
   
 ];
@@ -32,25 +38,25 @@ export default class SimpleGraph extends PureComponent {
       <div style={{ width: '100%', marginTop:'2rem' }}>
 
 <Card>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart
-            width={500}
-            height={200}
-            data={data}
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid vertical={false} strokeDasharray="1" horizontalFill={['#555555', '#444444']} fillOpacity={0.2}/>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Line connectNulls type="linear" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-          </LineChart>
-        </ResponsiveContainer>
+<ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          width={500}
+          height={400}
+          data={data}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+        </AreaChart>
+      </ResponsiveContainer>
         </Card>
       </div>
     );
