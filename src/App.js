@@ -4,6 +4,7 @@ import { styled } from "@mui/system";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./Config/theme";
 import PageWrapper from "./Components/PageWrapper/PageWrapper";
+import { AppStorage } from "./Context/AppContext";
 
 
 
@@ -24,6 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+      <AppStorage>
           <CssBaseline>
             <BodyBackground>       
                 <Routes>
@@ -36,6 +38,7 @@ function App() {
             
             </BodyBackground>
           </CssBaseline>
+        </AppStorage>
       </BrowserRouter>
     </ThemeProvider>
   );

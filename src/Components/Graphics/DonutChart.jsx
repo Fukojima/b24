@@ -88,6 +88,7 @@ export default class DonuChart extends PureComponent {
             data={data}
             cx="50%"
             cy="50%"
+            label
             innerRadius={60}
             outerRadius={80}
             fill="#8884d8"

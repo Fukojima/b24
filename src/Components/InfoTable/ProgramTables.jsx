@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { Card } from '@mui/material';
 import {ResponsiveContainer}  from "recharts";
 const columns = [
   { id: 'id', label: 'Id', minWidth: 100 },
@@ -17,49 +18,35 @@ const columns = [
     align: 'right',
   },
   {
-    id: 'serviço',
-    label: 'Serviço',
+    id: 'cns',
+    label: 'N° Carteira',
     minWidth: 100,
     align: 'right',
   },
-  { id: 'tipoAtendimento', label: 'Atendimento', minWidth: 100 },
+  { id: 'programa', label: 'Programa', minWidth: 100 },
   {
-    id: 'prestador',
-    label: 'Prestador',
+    id: 'dtEntrada',
+    label: 'Data de Entrada',
     minWidth: 100,
     align: 'right',
  
-  },
-  {
-    id: 'dtAtendimento',
-    label: 'Data',
-    minWidth: 100,
-    align: 'right',
- 
-  },
+  }
 ];
 
-function createData(id, paciente,serviço, tipoAtendimento, prestador,dtAtendimento) {
+function createData(id, paciente,cns, programa, dtEntrada) {
 
-  return { id, paciente, serviço, tipoAtendimento, prestador, dtAtendimento };
+  return { id, paciente, cns, programa, dtEntrada};
 }
 
 const rows = [
-  createData('11231', 'Katarina Silva', 'Clinica Geral', 'Urgência','Ântonio Borger - Clinico Geral', '12/05/2022'),
-  createData('11228', 'João de Melo', 'Neurologia', 'Ambulatório','Marta Gerdes - Neurocirurgiã','12/05/2022'),
-  createData('11227', 'Hugo Baptista', 'Clinica Geral', 'Ambulatório','Ântonio Borger - Clinico Geral','12/05/2022'),
-  createData('11226', 'Julio Hend', 'Angiologia', 'Ambulatório','Ântonio Borger - Clinico Geral','12/05/2022'),
-  createData('11220', 'Carlos Alberto', 'Clinia Geral','Ambulatório','Ântonio Borger - Clinico Geral','12/05/2022'),
-  createData('11219', 'Fernando Montebello', 'Cirurgia Geral', 'Internação','Ântonio Borger - Clinico Geral','12/05/2022'),
-  // createData('07/01/2022', 'DE', 83019200, 357578),
-  // createData('08/01/2022', 'IE', 4857000, 70273),
-  // createData('09/01/2022', 'MX', 126577691, 1972550),
-  // createData('10/01/2022', 'JP', 126310000, 377973),
-  // createData('11/01/2022', 'FR', 67022000, 640679),
-  // createData('12/01/2022', 'GB', 67545757, 242495),
-  // createData('13/01/2022', 'RU', 146793744, 10098246),
-  // createData('14/01/2022', 'NG', 200962417, 923768),
-  // createData('15/01/2022', 'BR', 210147125, 8515767),
+  createData('11231', 'Katarina Silva',795267494960006 ,'Gestante', '12/05/2022'),
+  createData('11228', 'João de Melo', 132073415730004, 'Hipertensão','12/05/2022'),
+  createData('11227', 'Hugo Baptista', 176617830370002, 'Hipertensão','12/05/2022'),
+  createData('11226', 'Julio Hend',228618567410018,"Diabetes" ,'12/05/2022'),
+  createData('11220', 'Carlos Alberto', 269784215810004,'Melhor Idade' ,'12/05/2022'),
+  createData('11219', 'Fernando Montebello', 180437099860004,'Obesidade' ,'12/05/2022'),
+  createData('11220', 'Carlos Alberto', 269784215810004,'Melhor Idade' ,'12/05/2022'),
+  createData('11219', 'Fernando Montebello', 180437099860004,'Obesidade' ,'12/05/2022'),
 ];
 
 export default function InfoTable() {
@@ -77,9 +64,18 @@ export default function InfoTable() {
   
 
   return (
+    <Card
+    sx={{
+      width: 700,
+  
+      marginLeft: "1rem",
+      marginTop: "1rem",
+      backgroundColor: "#F9F8F8",
+    }}
+  >
     <ResponsiveContainer width="100%" height="100%">
     <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 440,  color: 'white', backgroundColor:"#F9F8F8"}}>
+      <TableContainer sx={{ height: 485,  color: 'white', backgroundColor:"#F9F8F8"}}>
         <Table  aria-label="sticky table">
           <TableHead stickyHeader style={{ backgroundColor: '#f2fcff',  shadowColor: '#000',
   shadowOffset: { width: 0, height: 2 },
@@ -131,5 +127,6 @@ export default function InfoTable() {
       />
     </Paper>
     </ResponsiveContainer>
+    </Card>
   );
 }

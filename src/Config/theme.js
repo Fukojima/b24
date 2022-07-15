@@ -1,13 +1,15 @@
 import { createTheme } from "@mui/material";
 import { ptBR } from '@mui/material/locale';
-import darkScrollbar from "@mui/material/darkScrollbar";
 import "@fontsource/source-sans-pro"; 
+import customScrollbar from "../Components/CustomStyles/ScrollBar";
 
 
 let theme = createTheme(
   {
     palette: {
-      mode: "dark",
+      background: {
+        default: "#F0F3FF"
+      },
       primary: {
         main: "#9AC0D8",
         light: "#16679A",
@@ -20,25 +22,19 @@ let theme = createTheme(
         medium: "#0899BA",
       },
     },
-    shadows: {
-      0: "0px 0px 0px rgba(133, 157, 177,0.2);",
-      1: "0px 2px 10px rgba(133, 157, 177,0.2);",
-      8: "0px 2px 10px rgba(133, 157, 177,0.2);",
-      24: "0px 2px 10px rgba(133, 157, 177,0.2);",
-    },
     typography: {
-      fontFamily: ["Montserrat", "sans-serif"].join(","),
+      fontFamily: ["Rubik", "sans-serif"].join(","),
     },
   },
   ptBR
 );
-
+const scrollbarColor = "green";
 theme = createTheme(theme, {
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body:
-         darkScrollbar(),
+       customScrollbar()
       },
     },
     MuiMenu: {

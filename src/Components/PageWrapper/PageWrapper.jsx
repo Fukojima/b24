@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Grid, Box, Typography } from "@mui/material";
-import Plans from "../../Pages/Plans";
-import logo from "../../assets/logo-black.png";
+import Programs from "../../Pages/Programs";
+import logo from "../../assets/TMS.png";
 import PopupConnection from "../PopupConnection/PopupConnection";
 import ProfileMenu from "../../Components/ProfileMenu/ProfileMenu";
 import MainDashboard from "../../Components/MainDashboard/MainDashboard";
@@ -77,17 +77,16 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider", backgroundColor:"#F9F8F8"}}>
         <Grid container>
-          <Grid item xs={3} mt={1} align="center">
-            <img src={logo} alt="Logo" height="30rem" />
+          <Grid item xs={3}  align="center" >
+            <img src={logo} alt="Logo" height="50rem" />
           </Grid>
           <Grid item xs={5}>
             <Tabs value={value} onChange={handleChange}>
               <Tab label="Analise Geral" {...a11yProps(0)} />
-              <Tab label="Planos" {...a11yProps(1)} />
-              <Tab label="Robôs" {...a11yProps(2)} />
-              <Tab label="Afiliados" {...a11yProps(3)} />
+              <Tab label="Programas" {...a11yProps(1)} />
+              <Tab label="Mapeamento de Comorbidades" {...a11yProps(2)} />
             </Tabs>
           </Grid>
           <Grid item mt={0.5} xs={3}>
@@ -105,7 +104,7 @@ export default function BasicTabs() {
 
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Plans />
+        <Programs />
       </TabPanel>
       <TabPanel value={value} index={2}>
       <Robots/>

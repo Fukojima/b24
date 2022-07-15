@@ -16,7 +16,7 @@ function LineGraphic({ datas}) {
   const config = [{ key:"alta", color:"#47B900", title:<span style={{display: "inline-flex"}}> Altas próximos <br/> 3 dias </span>},{ key:"entrada", color:"#F32A28",title:<span style={{display: "inline-flex"}}> Entradas<br/> próximos  3 dias </span> },{ key:"internacao", color:"#11528B",title:<span style={{display: "inline-flex"}}> Internações <br/>próximos  3 dias </span> } ]
 
 
-  const lines = config.map((val) => {
+  const lines = config?.map((val) => {
     return (
       <Line
         dataKey={val.key}
@@ -55,7 +55,7 @@ function LineGraphic({ datas}) {
             layout="vertical"
             iconType="square"
 
-            payload={config.map((v) => ({
+            payload={config?.map((v) => ({
               type:"square",
               value: <span style={{color:'white', fontSize:8, fontFamily:{montserrat}}}>{v.title}</span>,
               color: `${v.color}`

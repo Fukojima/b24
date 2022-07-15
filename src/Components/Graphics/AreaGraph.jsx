@@ -8,49 +8,18 @@ import {
   CartesianGrid,
   Tooltip
 } from "recharts";
-import Card from "@mui/material/Card";
 
+import { Grid, Typography, Box, Card } from "@mui/material";
 function AreaGraph({ datas, config,  value }) {
 
-
-  const CustomTooltip = ({ active, payload, label }) => {
-
-
-    if (active && payload && payload.length) {
-
-      return (
-
-      
-                <Card    sx={{
-                  padding:1
-                }}>
-                <p style={{fontSize:10}}>Data: {`${label}`}</p>
-                <p style={{fontSize:10}}>Valor: {` ${payload[0].value}`}</p>
-                <p style={{fontSize:10}}>Queda: {` ${payload[0].value}`}</p>
-                </Card>
-             
-            );
-    
-
-      
-
-
-    }
-  
-    return null;
-  };
-  
-
-
-  const areas = config.map((value) => {
+  const areas = config?.map((value) => {
  
     return (
       <Area
-        type="monotone"
+        //type="monotone"
         dataKey={value.key}
         stroke="url(#colorPv)"
         stackId="1"
-
         fill="url(#colorUv) "
       />
     );
@@ -58,8 +27,15 @@ function AreaGraph({ datas, config,  value }) {
 
   return (
 
-      <Card sx={{ minWidth: 345, width:860 , marginTop:"2rem"}}>
-        <ResponsiveContainer width="100%" height={400}>
+      <Card sx={{  width:700 , margin:"1rem",  backgroundColor: "#F9F8F8"}}>
+              <Typography
+        sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
+        color="text.secondary"
+        gutterBottom
+      >
+       Faixa etária:
+      </Typography>
+        <ResponsiveContainer width="100%" height={200}>
           <AreaChart
             data={datas}
             margin={{
@@ -70,21 +46,22 @@ function AreaGraph({ datas, config,  value }) {
             }}
           >
             <CartesianGrid
-            stroke="#233767"
-            strokeDasharray="1"
+            //stroke="#233767"
+            strokeDasharray="0"
             vertical={false}
+            //horizontal={false}
           />
             <XAxis dataKey="name" />
             <YAxis dataKey="uv" />
-            <Tooltip content={<CustomTooltip />} />
+            {/* <Tooltip content={<CustomTooltip />} /> */}
             <defs>
               <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3EFFE8" stopOpacity={0.9} />
-                <stop offset="95%" stopColor="#313131" stopOpacity={0.5} />
+                <stop offset="30%" stopColor="#4aff5f" stopOpacity={0.5} />
+                <stop offset="70%" stopColor="#4aff5f" stopOpacity={0.1} />
               </linearGradient>
               <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#3EFFE8" stopOpacity={0.9} />
-                <stop offset="95%" stopColor="#62FF00" stopOpacity={0.5} />
+                <stop offset="95%" stopColor="#4aff5f" stopOpacity={0.5} />
               </linearGradient>
             </defs>
 
