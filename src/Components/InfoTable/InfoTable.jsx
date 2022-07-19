@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import {ResponsiveContainer}  from "recharts";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import MuiTableHead from "@material-ui/core/TableHead";
 const columns = [
   { id: 'id', label: 'Id', minWidth: 100 },
   {
@@ -74,18 +76,22 @@ export default function InfoTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  
+  const TableHeader = withStyles((theme) => ({
+    root: {
+      backgroundColor: "orange"
+    }
+  }))(MuiTableHead);
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer  >
     <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 440,  color: 'white', backgroundColor:"#F9F8F8"}}>
-        <Table  aria-label="sticky table">
-          <TableHead stickyHeader style={{ backgroundColor: '#f2fcff',  shadowColor: '#000',
+      <TableContainer sx={{ height:485, color: 'white', backgroundColor:"#F9F8F8"}}>
+        <Table stickyHeader aria-label="customized table" style={{ backgroundColor: '#F9F8F8',  shadowColor: '#000',
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.5,
   shadowRadius: 2,
-  elevation: 7, }} >
+  elevation: 7, }}>
+          <TableHeader style={{backgroundColor:"#8AB3CC"}} >
             <TableRow>
               {columns.map((column) => (
                 <TableCell
@@ -97,7 +103,7 @@ export default function InfoTable() {
                 </TableCell>
               ))}
             </TableRow>
-          </TableHead>
+          </TableHeader>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

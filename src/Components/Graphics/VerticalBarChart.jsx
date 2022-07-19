@@ -44,7 +44,7 @@ const tickFormatter = (value, index) => {
 export default function VerticalBarChart() {
 
   return (
-    <Card sx={{  width:700 , margin:"1rem",  backgroundColor: "#F9F8F8"}}>
+    <Card sx={{  width:700 , height:242, marginTop:"1rem",  backgroundColor: "#F9F8F8"}}>
     <Typography
 sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
 color="text.secondary"
@@ -52,7 +52,7 @@ gutterBottom
 >
 Alocação demográfica:
 </Typography>
-    <ResponsiveContainer width="100%" height={240}>
+    <ResponsiveContainer width="100%" height={200}>
 
 
         <BarChart

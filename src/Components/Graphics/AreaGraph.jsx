@@ -27,7 +27,7 @@ function AreaGraph({ datas, config,  value }) {
 
   return (
 
-      <Card sx={{  width:700 , margin:"1rem",  backgroundColor: "#F9F8F8"}}>
+      <Card sx={{  width:600 , margin:"1rem",  backgroundColor: "#F9F8F8"}}>
               <Typography
         sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
         color="text.secondary"

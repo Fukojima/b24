@@ -1,55 +1,161 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import TablePagination from '@mui/material/TablePagination';
+import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Card } from '@mui/material';
+import MuiTableHead from "@material-ui/core/TableHead";
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import {ResponsiveContainer}  from "recharts";
-const columns = [
-  { id: 'id', label: 'Id', minWidth: 100 },
-  {
-    id: 'paciente',
-    label: 'Paciente',
-    minWidth: 100,
-    align: 'right',
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+function createData(name, calories, fat, carbs, protein, price) {
+
+
+  
+  return {
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
+    price,
+    history: [
+      {
+        date: '2020-01-05',
+        patientId: '11091700',
+        value: 3,
+        admeasurement:"IMC"
+      },    {
+        date: '2020-01-05',
+        patientId: '11091700',
+        value: 3,
+        admeasurement:"IMC"
+      },    {
+        date: '2020-01-05',
+        patientId: '11091700',
+        value: 3,
+        admeasurement:"IMC"
+      },
+
+
+
+    ],
+  };
+}
+const useStyles = makeStyles((theme) => ({
+  tableHead: {
+      borderBottomStyle: "solid",
+      borderBottomColor: "blue"
   },
-  {
-    id: 'cns',
-    label: 'N° Carteira',
-    minWidth: 100,
-    align: 'right',
-  },
-  { id: 'programa', label: 'Programa', minWidth: 100 },
-  {
-    id: 'dtEntrada',
-    label: 'Data de Entrada',
-    minWidth: 100,
-    align: 'right',
- 
+  stickyHeader:{
+      borderCollapse:'collapse'
   }
-];
+}));
+function Row(props) {
+  const { row } = props;
+  const [open, setOpen] = React.useState(false);
 
-function createData(id, paciente,cns, programa, dtEntrada) {
-
-  return { id, paciente, cns, programa, dtEntrada};
+  return (
+    <React.Fragment>
+      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+        <TableCell>
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {row.name}
+        </TableCell>
+        <TableCell align="center">{row.calories}</TableCell>
+        <TableCell align="center" >{row.fat}</TableCell>
+        <TableCell align="center">{row.carbs}</TableCell>
+        <TableCell align="center">{row.protein}</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box sx={{ margin: 1 }}>
+              <Typography variant="h6" gutterBottom component="div">
+               Ultimas aferições
+              </Typography>
+              <Table size="small" aria-label="purchases">
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="center">Código Atendimento</TableCell>
+                    <TableCell align="center">Aferição</TableCell>
+                    <TableCell align="center">Resultado</TableCell>
+                    <TableCell align="center">Data Coleta</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {row.history.map((historyRow) => (
+                    <TableRow key={historyRow.patientId}>
+                      <TableCell align="center"component="th" scope="row">
+                        {historyRow.patientId}
+                      </TableCell>
+                      <TableCell align="center">{historyRow.admeasurement}</TableCell>
+                      <TableCell align="center">{historyRow.value}</TableCell>
+                      <TableCell align="center">
+                      {historyRow.date}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+    </React.Fragment>
+  );
 }
 
+Row.propTypes = {
+  row: PropTypes.shape({
+    calories: PropTypes.number.isRequired,
+    carbs: PropTypes.number.isRequired,
+    fat: PropTypes.number.isRequired,
+    history: PropTypes.arrayOf(
+      PropTypes.shape({
+        amount: PropTypes.number.isRequired,
+        customerId: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    protein: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
 const rows = [
-  createData('11231', 'Katarina Silva',795267494960006 ,'Gestante', '12/05/2022'),
-  createData('11228', 'João de Melo', 132073415730004, 'Hipertensão','12/05/2022'),
-  createData('11227', 'Hugo Baptista', 176617830370002, 'Hipertensão','12/05/2022'),
-  createData('11226', 'Julio Hend',228618567410018,"Diabetes" ,'12/05/2022'),
-  createData('11220', 'Carlos Alberto', 269784215810004,'Melhor Idade' ,'12/05/2022'),
-  createData('11219', 'Fernando Montebello', 180437099860004,'Obesidade' ,'12/05/2022'),
-  createData('11220', 'Carlos Alberto', 269784215810004,'Melhor Idade' ,'12/05/2022'),
-  createData('11219', 'Fernando Montebello', 180437099860004,'Obesidade' ,'12/05/2022'),
+  createData('Katarina Silva', 795267494960006, 'Fernanda Souza Rocha', 'I', '12/06/2020'),
+  createData('João de Melo', 795267494960006, 'Emily Castro Santos', 'I', '12/06/2020'),
+  createData('Hugo Baptista',795267494960006, 'Isabelle Silva Pereira', 'I', '12/06/2020'),
+  createData('Julio Hend',795267494960006, 'Bruna Sousa Azevedo', 'I', '12/06/2020'),
+  createData('Carlos Alberto', 795267494960006,'Anna Barbosa Barros', 'I', '12/06/2020'),
+  createData( 'Fernando Montebello', 795267494960006, 'Eduarda Carvalho Costa', 'I', '12/06/2020'),
+  createData('Hugo Baptista',795267494960006, 'Gabrielly Sousa Barros', 'I', '12/06/2020'),
+  createData('Julio Hend',795267494960006, 'Nicole Pereira Sousa', 'I', '12/06/2020'),
+  createData('Carlos Alberto', 795267494960006,'Laura Rocha Barros', 'I', '12/06/2020'),
+  createData( 'Fernando Montebello', 795267494960006, 'Rebeca Pereira Fernandes', 'I', '12/06/2020'),
 ];
 
-export default function InfoTable() {
+export default function ProgramsTables() {
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -61,62 +167,37 @@ export default function InfoTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  
-
   return (
-    <Card
-    sx={{
-      width: 700,
-  
+    <Box     sx={{
+
+      width:700,
+      height:400,
       marginLeft: "1rem",
       marginTop: "1rem",
       backgroundColor: "#F9F8F8",
-    }}
-  >
-    <ResponsiveContainer width="100%" height="100%">
+    }}>
+    <ResponsiveContainer  >
     <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ height: 485,  color: 'white', backgroundColor:"#F9F8F8"}}>
-        <Table  aria-label="sticky table">
-          <TableHead stickyHeader style={{ backgroundColor: '#f2fcff',  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.5,
-  shadowRadius: 2,
-  elevation: 7, }} >
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align='center'
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" align='center' tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align='center'>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
+      <TableContainer sx={{height:485, color: 'white', backgroundColor:"#F9F8F8"}}>
+        <Table stickyHeader aria-label="customized table" >
+          <TableHead   >
+          <TableRow >
+            <TableCell sx={{backgroundColor:"#8AB3CC",color:"white"}}/>
+            <TableCell sx={{backgroundColor:"#8AB3CC", color:"white"}} align="center">Paciente </TableCell>
+            <TableCell sx={{backgroundColor:"#8AB3CC", color:"white"}} align="center">Carteira</TableCell>
+            <TableCell sx={{backgroundColor:"#8AB3CC", color:"white"}} align="center">Nome Mãe</TableCell>
+            <TableCell sx={{backgroundColor:"#8AB3CC", color:"white"}} align="center">Classificação</TableCell>
+            <TableCell sx={{backgroundColor:"#8AB3CC", color:"white"}} align="center">Data de entrada</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <Row key={row.name} row={row} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    <TablePagination
         rowsPerPageOptions={[5, 10, 100]}
         component="div"
         count={rows.length}
@@ -127,6 +208,6 @@ export default function InfoTable() {
       />
     </Paper>
     </ResponsiveContainer>
-    </Card>
+    </Box>
   );
 }

@@ -45,8 +45,8 @@ const renderActiveShape = (props) => {
         cy={cy}
         startAngle={startAngle}
         endAngle={endAngle}
-        innerRadius={outerRadius + 6}
-        outerRadius={outerRadius + 10}
+        innerRadius={outerRadius}
+        outerRadius={outerRadius}
         fill={fill}
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
@@ -73,7 +73,7 @@ export default class DonuChart extends PureComponent {
 
   render() {
     return (
-<Card sx={{ minWidth: 345,  marginTop: "2rem" }}>
+<Card sx={{ minWidth: 345,  marginTop: "2rem", padding:5 }}>
 <Typography
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
@@ -81,7 +81,7 @@ export default class DonuChart extends PureComponent {
       </Typography>
       <ResponsiveContainer  height={375}>
 
-        <PieChart width={400} height={400}>
+        <PieChart width={200} height={200}>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
@@ -89,10 +89,8 @@ export default class DonuChart extends PureComponent {
             cx="50%"
             cy="50%"
             label
-            innerRadius={60}
-            outerRadius={80}
             fill="#8884d8"
-            
+       
             dataKey="value"
             onMouseEnter={this.onPieEnter}
           >        	{

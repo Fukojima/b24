@@ -12,8 +12,8 @@ import {
   Grid,
 } from "@mui/material";
 import MenuField from "../Utils/MenuField";
-export default function CardProgram() {
-  
+export default function CardProgram({program, param, describe}) {
+  console.log("adsdasda", program)
 
   return (
     <Card
@@ -30,14 +30,16 @@ export default function CardProgram() {
         color="text.secondary"
         gutterBottom
       >
-        Critérios de entrada no programa de Obesidade:
+
+        Critérios de entrada no programa de {program}:
       </Typography>
+      
       <Typography
         sx={{ fontSize: 12, marginTop: "1rem", marginLeft: "1rem" }}
         color="text.secondary"
         gutterBottom
       >
-        IMC > 30
+       {param}
       </Typography>
       <Typography
         sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
@@ -51,7 +53,8 @@ export default function CardProgram() {
         color="text.secondary"
         gutterBottom
       >
-   O Programa de Obesidade tem como principal objetivo promover o emagrecimento saudável, progressivo e duradouro através de tratamento clínico, realizando acompanhamento nutricional e psicológico dos beneficiários
+        {describe}
+   
       </Typography>
 
   </Card>

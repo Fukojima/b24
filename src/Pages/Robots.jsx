@@ -35,7 +35,7 @@ function Robots() {
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title> Planos</title>
       </Helmet>
       <Grid style={{backgroundColor:"#2d235c", opacity:0.5, boxShadow: "10px 5px 5px #2a2a2c ", borderBottomRightRadius: "20%"}}> <Typography variant={"h4"}> Destaques</Typography> </Grid>
@@ -43,7 +43,7 @@ function Robots() {
     <Grid> <Typography variant={"h4"}> Gratuitas</Typography> </Grid>
     <Grid>  <AliceCarousel  disableDotsControls stagePadding={stagePadding} responsive={responsive} mouseTracking items={robot} /></Grid>
     <Grid> <Typography variant={"h4"}> Pagas</Typography> </Grid>
-    <Grid>  <AliceCarousel  disableDotsControls stagePadding={stagePadding} responsive={responsive} mouseTracking items={robot} /></Grid>
+    <Grid>  <AliceCarousel  disableDotsControls stagePadding={stagePadding} responsive={responsive} mouseTracking items={robot} /></Grid> */}
 
     </>
   );
