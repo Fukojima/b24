@@ -18,9 +18,10 @@ export default function CardProgram({program, param, describe}) {
   return (
     <Card
     sx={{
-      width: 600,
+
       padding:1,
       marginLeft: "1rem",
+      marginRight:"1rem",
       marginTop: "7rem",
       backgroundColor: "#F9F8F8",
     }}

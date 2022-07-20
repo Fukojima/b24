@@ -12,11 +12,9 @@ import AreaGraph from "../Components/Graphics/AreaGraph"
 import statusCard from "../assets/Data/statusCard"
 import VerticalBarChart from "../Components/Graphics/VerticalBarChart"
 import DiabetesGraph from "../Components/Graphics/DiabetesGraph"
-
-
-import ValuationCard from "../Components/Card/ValuationCard";
-import CaptationCard from "../Components/Card/CaptationCard";
+import useHistory from "../service/useHistory"
 import MainTable from "../Components/InfoTable/MainTable";
+import OneLineGraphic from "../Components/Graphics/ComposedChart";
 function Programs() {
   const { selectedOption } = React.useContext(AppContext);
   const configOneLineChart = [{ key: "uv" }];
@@ -41,57 +39,134 @@ function Programs() {
   ]
 
 
+  let hypertensionArray = []
+  let obesityArray = []
+  let diabetesArray = []
+  let pregnantArray = []
+  const [history, setHistory] = React.useState([]);
 
-
-
+  async function Historys() {
+    console.log("iniciou")
+    const {getHistory} = useHistory();
+    let detailsResponse = [];
+  
+   detailsResponse = await getHistory();
+    setHistory(detailsResponse);
+    console.log("history",history)
+  }
+  React.useEffect(() => {
+   
+  }, []);
 
   React.useEffect(() => {
     setOption(selectedOption);
+    Historys();
+    
+  // totalMasc = history.filter(function(item) {
+  //   if (item.gender =="M"){
+  //     return item
+  //   }
+  // })
+
+
+  //  totalFem = history.filter(function(item) {
+  //   if (item.gender =="F"){
+  //     return item
+  //   }
+  // })
+ 
+ history.map(function(item) {
+                     
+              let results = item.admeasurements.filter(function(data){
+     
+
+                if (data[0]?.describeVitalAcronym =="P.A.D." && data[0]?.value > 70){
+
+                  hypertensionArray.push(item)
+                }
+        
+              if (data[0]?.describeVitalAcronym =="GLI" && data[0]?.value > 70){
+
+                diabetesArray.push(item)
+              }
+              if (data[0]?.describeVitalAcronym =="IMC"){
+
+                obesityArray.push(item)
+               }
+
+
+
+
+            })
+            let examsResults = item.exams.filter(function(data){
+
+
+              if (data[0]?.examName =="BETA-HCG" && data[0]?.value > 25){
+
+               pregnantArray.push(item)
+              }
+
+
+
+
+          })
+          })
+          console.log("obesity", obesityArray)
+          console.log("hypertension", hypertensionArray)
+          console.log("diabetes", diabetesArray)
+          console.log("pregnant", pregnantArray)
+
   }, [selectedOption]);
+
+  
+
+
+
 
   const ProgramScreens =((value) => {
 
         if (option == 5){
           return(
-      <>
-          <Grid container>
-          <Grid>
-            <CardProgram program="Obesidade" describe="O Programa de Obesidade tem como principal objetivo promover o emagrecimento saudável, progressivo e duradouro através de tratamento clínico, realizando acompanhamento nutricional e psicológico dos beneficiários" param="IMC > 30" />
-            <Grid sx={{ display: "flex" }}>
-              <PieGraph  datas={obesityData}/>
-              <ObesityGraph />
+            <>
+            <Grid container > 
+            <Grid item xs={6}>
+              <CardProgram program="Diabetes" describe="O Programa de Diabetes tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes" param="mg/d > 126"/>
+              <Grid  >
+                <Grid sx={{display:"flex"}}>  <PieGraph datas={diabetesData} />        <DiabetesGraph/></Grid>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid>
-            <ProgramTables />
-          </Grid>
-          <Grid sx={{display:"flex"}}>
-          <AreaGraph
-              datas={statusCard.oneLineChartData}
-              title="Pacientes Operados"
-              value={230}
-              config={configOneLineChart}
-            />
-                 <VerticalBarChart />
-
-          </Grid>
-
-        </Grid></>)
+  
+            <Grid  item xs={6}>
+              <ProgramTables />
+            </Grid>
+            <Grid item xs={12} sx={{display:"flex"}}>
+            <AreaGraph
+                datas={statusCard.oneLineChartData}
+                title="Pacientes Operados"
+                value={230}
+                config={configOneLineChart}
+              />
+              <VerticalBarChart />
+  
+            </Grid>
+           
+  
+          </Grid></>)
         }if (option == 1){
           return(
             <>
-          <Grid container>
-          <Grid>
+          <Grid container > 
+          <Grid item xs={6}>
             <CardProgram program="Diabetes" describe="O Programa de Diabetes tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes" param="mg/d > 126"/>
-            <Grid sx={{ display: "flex" }}>
-              <PieGraph datas={diabetesData} />
-            <DiabetesGraph/>
+            <Grid  >
+              <Grid sx={{display:"flex"}}>  <PieGraph datas={diabetesData} />        <DiabetesGraph/></Grid>
             </Grid>
           </Grid>
-          <Grid>
+
+          <Grid  item xs={6}>
             <ProgramTables />
           </Grid>
-          <Grid sx={{display:"flex"}}>
+          <Grid item xs={12} sx={{display:"flex"}}>
           <AreaGraph
               datas={statusCard.oneLineChartData}
               title="Pacientes Operados"
@@ -101,64 +176,67 @@ function Programs() {
             <VerticalBarChart />
 
           </Grid>
+         
 
         </Grid></>)
         }if (option == 2){
           return(
             <>
-          <Grid container>
-          <Grid>
-            <CardProgram program="Hipertensão" describe="O Programa de Hipertensão tem como principal objetivo cadastrar e acompanhar todos os pacientes hipertensos a fim de que através do cuidado especial consigamos fazer um controle das doenças e garantir uma melhor qualidade de vida aos pacientes." param=" mmHg > 140 "/>
-            <Grid sx={{ display: "flex" }}>
-              <PieGraph datas={hypertensionData}/>
-            <DiabetesGraph/>
+            <Grid container > 
+            <Grid item xs={6}>
+              <CardProgram program="Diabetes" describe="O Programa de Diabetes tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes" param="mg/d > 126"/>
+              <Grid  >
+                <Grid sx={{display:"flex"}}>  <PieGraph datas={diabetesData} />        <DiabetesGraph/></Grid>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid>
-            <ProgramTables />
-          </Grid>
-          <Grid sx={{display:"flex"}}>
-          <AreaGraph
-              datas={statusCard.oneLineChartData}
-              title="Pacientes Operados"
-              value={230}
-              config={configOneLineChart}
-            />
-            <VerticalBarChart/>
-
-          </Grid>
-
-        </Grid></>)
-        }
-        
-        
-        
-        else{
+  
+            <Grid  item xs={6}>
+              <ProgramTables />
+            </Grid>
+            <Grid item xs={12} sx={{display:"flex"}}>
+            <AreaGraph
+                datas={statusCard.oneLineChartData}
+                title="Pacientes Operados"
+                value={230}
+                config={configOneLineChart}
+              />
+              <VerticalBarChart />
+  
+            </Grid>
+           
+  
+          </Grid></>)
+        }if (option == 3){
           return(
             <>
-          <Grid container>
-          <Grid>
-            <CardProgram program="Diabetes" describe="O Programa de Diabetes tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes" param="Glicose > 126 mg/d"/>
-            <Grid sx={{ display: "flex" }}>
-              <PieGraph />
-            <DiabetesGraph/>
+            <Grid container > 
+            <Grid item xs={6}>
+              <CardProgram program="Gestante" describe="O objetivo é o desenvolvimento de ações de prénatal, acompanhamento e tratamento das doenças
+incluídas no Programa promovendo o acesso, o
+incremento da qualidade e da capacidade
+instalada do serviço de referência e dos demais
+serviços" param="mIU/ml > 25"/>
+              <Grid  >
+                <Grid sx={{display:"flex"}}> <OneLineGraphic/></Grid>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid>
-            <ProgramTables />
-          </Grid>
-          <Grid sx={{display:"flex"}}>
-          <AreaGraph
-              datas={statusCard.oneLineChartData}
-              title="Pacientes Operados"
-              value={230}
-              config={configOneLineChart}
-            />
-            <VerticalBarChart />
-
-          </Grid>
-
-        </Grid></>)
+  
+            <Grid  item xs={6}>
+              <ProgramTables data={pregnantArray} />
+            </Grid>
+            <Grid item xs={12} sx={{display:"flex"}}>
+            <AreaGraph
+                datas={statusCard.oneLineChartData}
+                title="Pacientes Operados"
+                value={230}
+                config={configOneLineChart}
+              />
+              <VerticalBarChart />
+  
+            </Grid>
+           
+  
+          </Grid></>)
         }
   })
 
@@ -169,16 +247,16 @@ function Programs() {
 
 
   return (
-    <>
+    < >
       <ChangeCard />
       {option == 0 || !option ? (
         <>
           {" "}
           <Grid container>
-            <Grid>
+            <Grid item xs={6}>
               <DoubleRadarChart />
             </Grid>
-            <Grid sx={{ display: "flex" }}>
+            <Grid item xs={6} sx={{ display: "flex" }}>
 
             <AlocationProgramsCard/>
             <MainTable/>

@@ -22,7 +22,7 @@ export default function DoubleRadarChart() {
   return (
     <Card
       sx={{
-        width: 600,
+        
         marginLeft: "1rem",
         marginTop: "7rem",
         backgroundColor: "#F9F8F8",
@@ -75,7 +75,7 @@ export default function DoubleRadarChart() {
         </Grid>
       </Grid>
 
-      <ResponsiveContainer height={375} width={600}>
+      <ResponsiveContainer height={375} >
         <RadarChart outerRadius="80%" data={data}>
           <PolarGrid />
           <PolarAngleAxis

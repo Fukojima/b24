@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import {ResponsiveContainer}  from "recharts";
+import { Grid, Card } from "@mui/material";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 function createData(name, calories, fat, carbs, protein, price) {
 
@@ -79,9 +80,9 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell align="center">{row.calories}</TableCell>
-        <TableCell align="center" >{row.fat}</TableCell>
-        <TableCell align="center">{row.carbs}</TableCell>
+        <TableCell align="center">{row.patientName}</TableCell>
+        <TableCell align="center" >{row.cardId}</TableCell>
+        <TableCell align="center">{row.motherName}</TableCell>
         <TableCell align="center">{row.protein}</TableCell>
       </TableRow>
       <TableRow>
@@ -101,7 +102,7 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
+                  {row.map((historyRow) => (
                     <TableRow key={historyRow.patientId}>
                       <TableCell align="center"component="th" scope="row">
                         {historyRow.patientId}
@@ -154,8 +155,8 @@ const rows = [
   createData( 'Fernando Montebello', 795267494960006, 'Rebeca Pereira Fernandes', 'I', '12/06/2020'),
 ];
 
-export default function ProgramsTables() {
-
+export default function ProgramsTables({data}) {
+  console.log("AAAAAAAAA", data)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -168,17 +169,16 @@ export default function ProgramsTables() {
     setPage(0);
   };
   return (
-    <Box     sx={{
+    <Card    sx={{
 
-      width:700,
-      height:400,
-      marginLeft: "1rem",
+          
       marginTop: "1rem",
+      marginRight:"1rem",
       backgroundColor: "#F9F8F8",
     }}>
-    <ResponsiveContainer  >
+    <ResponsiveContainer >
     <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{height:485, color: 'white', backgroundColor:"#F9F8F8"}}>
+      <TableContainer sx={{height:485, width:"100%", color: 'white', backgroundColor:"#F9F8F8"}}>
         <Table stickyHeader aria-label="customized table" >
           <TableHead   >
           <TableRow >
@@ -191,8 +191,8 @@ export default function ProgramsTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {data.map((row) => (
+            <Row key={row.patientName} row={row} />
           ))}
         </TableBody>
       </Table>
@@ -208,6 +208,6 @@ export default function ProgramsTables() {
       />
     </Paper>
     </ResponsiveContainer>
-    </Box>
+    </Card>
   );
 }

@@ -27,7 +27,7 @@ function AreaGraph({ datas, config,  value }) {
 
   return (
 
-      <Card sx={{  width:600 , margin:"1rem",  backgroundColor: "#F9F8F8"}}>
+      <Card sx={{  width:'50%', margin:"1rem",  backgroundColor: "#F9F8F8"}}>
               <Typography
         sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
         color="text.secondary"
@@ -35,7 +35,7 @@ function AreaGraph({ datas, config,  value }) {
       >
        Faixa etária:
       </Typography>
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer  height={200}>
           <AreaChart
             data={datas}
             margin={{

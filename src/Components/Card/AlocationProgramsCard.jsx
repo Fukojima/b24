@@ -43,7 +43,7 @@ export default function AlocationProgramsCard() {
   return (
     <Card
       sx={{
-        width: 250,
+
         height: 540,
         padding: 2,
         marginLeft: "1rem",

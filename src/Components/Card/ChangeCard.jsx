@@ -21,7 +21,7 @@ export default function ChangeCard() {
       sx={{
         position:"absolute",
         padding: 1,
-        width: 600,
+        width: 750,
         height: "5rem ",
         marginTop: "1rem",
         marginLeft: "1rem",

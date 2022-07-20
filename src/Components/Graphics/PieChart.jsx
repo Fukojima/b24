@@ -27,7 +27,7 @@ export default function PieGraph({ config, datas }) {
 
 
   return (
-    <Card sx={{ width: 290, marginTop:"1rem", marginLeft:"1rem", padding:1, backgroundColor: "#F9F8F8" }}>
+    <Card sx={{ width:'50%', marginTop:"1rem", marginLeft:"1rem", padding:1, backgroundColor: "#F9F8F8" }}>
        <Typography
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >

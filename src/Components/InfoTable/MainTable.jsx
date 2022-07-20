@@ -74,9 +74,10 @@ export default function MainTable() {
   return (
     <Box
       sx={{
-        width: 450,
+        width: '70%',
         height: 400,
         marginLeft: "1rem",
+        marginRight:"1rem",
         marginTop: "1rem",
         backgroundColor: "#F9F8F8",
       }}

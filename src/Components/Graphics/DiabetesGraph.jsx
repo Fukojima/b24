@@ -42,9 +42,10 @@ export default function DiabetesGraph() {
   return (
     <Card
       sx={{
-        width: 290,
+        width:'50%',
         marginTop: "1rem",
-        marginLeft: "1rem",
+        marginLeft:"1rem",
+        marginRight: "1rem",
         padding: 1,
         backgroundColor: "#F9F8F8",
       }}
@@ -112,7 +113,7 @@ export default function DiabetesGraph() {
         </Grid>
       </Grid>
 
-      <ResponsiveContainer width="100%" height={150}>
+      <ResponsiveContainer height={170}>
         <PieChart>
           <Pie
             dataKey="value"
