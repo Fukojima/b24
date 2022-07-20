@@ -117,16 +117,14 @@ export default function ObesityGraph() {
           <Pie
             dataKey="value"
             isAnimationActive={false}
-            data={data01}
+
             cx="50%"
             cy="50%"
             outerRadius={50}
             label={renderCustomizedLabel}
           >
             {" "}
-            {data01.map((entry, index) => (
-              <Cell fill={COLORS[index % COLORS.length]} />
-            ))}
+
           </Pie>
 
           <Tooltip />

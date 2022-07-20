@@ -21,8 +21,7 @@ export default  function InfoCard() {
 
  
 
-  
-  console.log("details", details)
+
   
   
   async function Services(month) {
@@ -36,7 +35,6 @@ export default  function InfoCard() {
 
 
 const services = details?.map((item)=>{
-  console.log("dasdas", item)
   return (
     <>
     <Grid container  sx={{ mt: 1,  }} >

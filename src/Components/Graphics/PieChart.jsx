@@ -18,7 +18,7 @@ const defaultLabelStyle = {
   fontSize: "8px",
 };
 const shiftSize = 7;
-export default function PieGraph({ config, datas }) {
+export default function PieGraph({ config, datas,qt }) {
 
   const daa = [
     { title: "Negativa", value: 33, color: "#dc7de7" },
@@ -31,7 +31,7 @@ export default function PieGraph({ config, datas }) {
        <Typography
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        Total pacientes: 40
+        Total pacientes:{qt}
       </Typography>
 
       <Grid container><Grid item xs={4}>  <Typography

@@ -89,7 +89,7 @@ export default function DiabetesGraph() {
               fontSize="small"
               style={{ color: "#75a6c5", marginRight: "0.2rem" }}
             />{" "}
-             Hispertensão II
+             Hipertensão II
           </Typography>
         </Grid>
         <Grid item xs={4}>

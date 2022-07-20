@@ -11,11 +11,11 @@ import pregnantIcon from "../../assets/pregnant.png";
 export default function AlocationProgramsCard() {
   const shiftSize = 7;
   const setPrograms = [
-    { icon: diabetesIcon, text: "Diabetes: 25 pacientes" },
-    { icon: pregnantIcon, text: "Gestante: 17 pacientes" },
-    { icon: hypertensionIcon, text: "Hipertensão: 36 pacientes" },
-    { icon: thirdAgeIcon, text: "Melhor Idade: 27 pacientes" },
-    { icon: obesityIcon, text: "Obesidade: 30 pacientes" },
+    { icon: diabetesIcon, text: "Diabetes: 18%" },
+    { icon: pregnantIcon, text: "Gestante: 12%" },
+    { icon: hypertensionIcon, text: "Hipertensão: 26%" },
+    { icon: thirdAgeIcon, text: "Melhor Idade: 20%" },
+    { icon: obesityIcon, text: "Obesidade: 24%" },
   ];
   const data = [
     { name: "a", value: 74 },
@@ -45,14 +45,14 @@ export default function AlocationProgramsCard() {
       sx={{
 
         height: 540,
-        padding: 2,
+        padding: 1,
         marginLeft: "1rem",
         marginTop: "1rem",
         backgroundColor: "#F9F8F8",
       }}
     >
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Taxa de captação:
+        Total Pacientes:
       </Typography>
       <ResponsiveContainer width="100%" height={150}>
       <PieChart
@@ -75,7 +75,7 @@ export default function AlocationProgramsCard() {
             return <Cell key={`cell-${index}`} fill="#8AB3CC"/>;
           })}
           <Label
-            value={`${data[0].value}%`}
+            value={`137`}
             position="center"
    
 

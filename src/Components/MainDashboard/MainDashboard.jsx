@@ -43,7 +43,7 @@ export default function MainDashboard() {
           <ValuationCard
      icon={<CalendarMonth/>}
             title={"Período:"}
-            value={"Maio"}
+            value={"Julho"}
             color={"text.secondary"}
           />
         </Grid>

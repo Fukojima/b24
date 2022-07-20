@@ -47,12 +47,12 @@ function createData(id, paciente,serviço, tipoAtendimento, prestador,dtAtendime
 }
 
 const rows = [
-  createData('11231', 'Katarina Silva', 'Clinica Geral', 'Urgência','Ântonio Borger - Clinico Geral', '12/05/2022'),
-  createData('11228', 'João de Melo', 'Neurologia', 'Ambulatório','Marta Gerdes - Neurocirurgiã','12/05/2022'),
-  createData('11227', 'Hugo Baptista', 'Clinica Geral', 'Ambulatório','Ântonio Borger - Clinico Geral','12/05/2022'),
-  createData('11226', 'Julio Hend', 'Angiologia', 'Ambulatório','Ântonio Borger - Clinico Geral','12/05/2022'),
-  createData('11220', 'Carlos Alberto', 'Clinia Geral','Ambulatório','Ântonio Borger - Clinico Geral','12/05/2022'),
-  createData('11219', 'Fernando Montebello', 'Cirurgia Geral', 'Internação','Ântonio Borger - Clinico Geral','12/05/2022'),
+  createData('11231', 'Katarina Silva', 'Clinica Geral', 'Urgência','Ântonio Borger - Clinico Geral', '02/07/2022'),
+  createData('11228', 'João de Melo', 'Neurologia', 'Ambulatório','Marta Gerdes - Neurocirurgiã','04/07/2022'),
+  createData('11227', 'Hugo Baptista', 'Clinica Geral', 'Ambulatório','Ântonio Borger - Clinico Geral','12/07/2022'),
+  createData('11226', 'Julio Hend', 'Angiologia', 'Ambulatório','Ântonio Borger - Clinico Geral','12/07/2022'),
+  createData('11220', 'Carlos Alberto', 'Clinia Geral','Ambulatório','Ântonio Borger - Clinico Geral','12/07/2022'),
+  createData('11219', 'Fernando Montebello', 'Cirurgia Geral', 'Internação','Ântonio Borger - Clinico Geral','15/07/2022'),
   // createData('07/01/2022', 'DE', 83019200, 357578),
   // createData('08/01/2022', 'IE', 4857000, 70273),
   // createData('09/01/2022', 'MX', 126577691, 1972550),

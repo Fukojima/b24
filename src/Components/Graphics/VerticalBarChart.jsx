@@ -7,41 +7,17 @@ import {
   YAxis,
   ResponsiveContainer,
 } from "recharts";
-const data = [
-  {
-    name: "Abreu e Lima",
-    pv: 32,
+const _ = require('lodash');
 
-  },
-  {
-    name: "Igarassu",
-    pv: 30,
 
-  },
-  {
-    name: "Recife",
-    pv: 28,
+export default function VerticalBarChart({data}) {
 
-  },
-  {
-    name: "Itapissuma",
-    pv: 8,
 
-  },
-  {
-    name: "Olinda",
-    pv: 12,
-
-  },
-
-];
-const tickFormatter = (value, index) => {
-  const limit = 20; // put your maximum character
-  if (value.length < limit) return value;
-  return `${value.substring(0, limit)}...`;
-};
-
-export default function VerticalBarChart() {
+  let alocation = _.groupBy(data, "uf");
+  let ufArray = Object.keys(alocation)
+  let final = ufArray.map((uf) =>({ uf:uf, pv:alocation[uf].length}))
+ 
+  console.log("final", final)
 
   return (
     <Card sx={{   width:'50%' , height:242, marginTop:"1rem", marginRight:'1rem', backgroundColor: "#F9F8F8"}}>
@@ -59,11 +35,11 @@ Alocação demográfica:
           layout="vertical"
           width={200}
           height={200}
-          data={data}
+          data={final}
         >
           <XAxis  type="number" />
           <YAxis textAnchor= "end"    width={120}
- sclaeToFit="true" verticalAnchor= "start"  interval={0}  dataKey="name" type="category" />
+ sclaeToFit="true" verticalAnchor= "start"  interval={0}  dataKey="uf" type="category" />
           <defs>
               <linearGradient id="colorTv" x1="0" y1="1" x2="1" y2="1">
                 <stop offset="20%" stopColor="#4aff5f" stopOpacity={0.2} />

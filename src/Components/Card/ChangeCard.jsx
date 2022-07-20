@@ -21,7 +21,7 @@ export default function ChangeCard() {
       sx={{
         position:"absolute",
         padding: 1,
-        width: 750,
+        width: 740,
         height: "5rem ",
         marginTop: "1rem",
         marginLeft: "1rem",
@@ -37,7 +37,7 @@ export default function ChangeCard() {
        Estatísticas dos programas 
           </Typography>
           <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
-          Ultima atualização: 10/01/2022 às 18:42
+          Ultima atualização: 20/07/2022 às 15:42
         </Typography>
         </Grid>
         <Grid xs={5} >

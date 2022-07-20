@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Grid, Typography, Box, Card } from "@mui/material";
 import {
   ComposedChart,
   Line,
@@ -14,45 +15,52 @@ import {
 
 const data = [
   {
-    name: 'Page A',
-    uv: 590,
-    pv: 800,
-    amt: 1400,
+    name: '1 - 2 meses',
+    Qtd: 5,
+    mês: 800,
+    mIU: 300,
   },
   {
-    name: 'Page B',
-    uv: 868,
-    pv: 967,
-    amt: 1506,
+    name: '3 - 4 meses',
+    Qtd: 16,
+    mês: 967,
+    mIU: 506,
   },
   {
-    name: 'Page C',
-    uv: 1397,
-    pv: 1098,
-    amt: 989,
+    name: '5 - 6 meses',
+    Qtd: 13,
+    mês: 1098,
+    mIU: 989,
   },
   {
-    name: 'Page D',
-    uv: 1480,
-    pv: 1200,
-    amt: 1228,
+    name: '7 - 8 meses',
+    Qtd: 14,
+    mês: 1200,
+    mIU: 928,
   },
   {
-    name: 'Page E',
-    uv: 1520,
-    pv: 1108,
-    amt: 1100,
+    name: '9 meses',
+    Qtd: 2,
+    mês: 1108,
+    mIU: 1100,
   },
-  {
-    name: 'Page F',
-    uv: 1400,
-    pv: 680,
-    amt: 1700,
-  },
+
 ];
 export default function OneLineGraphic({ config, datas }) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <>
+    <Card sx={{ padding:1,   width:'100%' , height:242, marginTop:"1rem", marginRight:'1rem',marginLeft:'1rem', backgroundColor: "#F9F8F8"}}>
+    <Typography
+        sx={{ display: "flex", justifyContent: "left", }}
+      >
+      Estimativa período gestacional:
+      </Typography>
+    <Typography
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+      Quantidade x mIU/ml.
+      </Typography>
+    <ResponsiveContainer width="100%" height={200}>
         <ComposedChart
           width={500}
           height={400}
@@ -66,14 +74,15 @@ export default function OneLineGraphic({ config, datas }) {
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis dataKey="name" label={{ value: 'Pages', position: 'insideBottomRight', offset: 0 }} scale="band" />
-          <YAxis label={{ value: 'Index', angle: -90, position: 'insideLeft' }} />
+          <YAxis datakey="Qtd"/>
           <Tooltip />
           <Legend />
-          <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
-          <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-          <Line type="monotone" dataKey="uv" stroke="#ff7300" />
+          <Area type="monotone" dataKey="mIU" fill="#8884d8" stroke="#8884d8" />
+          <Bar dataKey="mês" barSize={20} fill="#413ea0" />
         </ComposedChart>
       </ResponsiveContainer>
+      </Card>
+      </>
   );
 }
 
