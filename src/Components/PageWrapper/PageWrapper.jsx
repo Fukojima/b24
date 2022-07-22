@@ -80,11 +80,11 @@ export default function BasicTabs() {
       <Box sx={{ borderBottom: 1, borderColor: "divider", backgroundColor:"#F9F8F8"}}>
         <Grid container>
           <Grid item xs={3}  align="center" >
-            <img src={logo} alt="Logo" height="50rem" />
+            {/* <img src={logo} alt="Logo" height="50rem" /> */}
           </Grid>
           <Grid item xs={5}>
             <Tabs value={value} onChange={handleChange}>
-              <Tab label="Analise Geral" {...a11yProps(0)} />
+              <Tab label="Atendimentos" {...a11yProps(0)} />
               <Tab label="Programas" {...a11yProps(1)} />
               <Tab label="Mapeamento de Comorbidades" {...a11yProps(2)} />
             </Tabs>

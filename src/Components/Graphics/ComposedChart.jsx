@@ -15,34 +15,34 @@ import {
 
 const data = [
   {
-    name: '1 - 2 meses',
+    name: '1 - 2 semanas',
     Qtd: 5,
     mês: 800,
     mIU: 300,
   },
   {
-    name: '3 - 4 meses',
+    name: '3 - 4 semanas',
     Qtd: 16,
     mês: 967,
     mIU: 506,
   },
   {
-    name: '5 - 6 meses',
+    name: '5 - 6 semanas',
     Qtd: 13,
     mês: 1098,
     mIU: 989,
   },
   {
-    name: '7 - 8 meses',
+    name: '7 - 9 semanas',
     Qtd: 14,
     mês: 1200,
     mIU: 928,
   },
   {
-    name: '9 meses',
+    name: '10+ meses',
     Qtd: 2,
     mês: 1108,
-    mIU: 1100,
+    mIU: 2090,
   },
 
 ];
@@ -73,7 +73,7 @@ export default function OneLineGraphic({ config, datas }) {
           }}
         >
           <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey="name" label={{ value: 'Pages', position: 'insideBottomRight', offset: 0 }} scale="band" />
+          <XAxis dataKey="name"  scale="band" />
           <YAxis datakey="Qtd"/>
           <Tooltip />
           <Legend />

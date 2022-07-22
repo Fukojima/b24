@@ -38,7 +38,7 @@ function createData(paciente, carteira, programa) {
 
 const rows = [
   createData("Katarina Silva", 217361366170002, "Obesidade"),
-  createData("Daryane Barbosa", 217361366170002, "Gestante/Hipertensão"),
+  createData("Daryane Barbosa", 89089887, "Gestante/Hipertensão"),
   createData("Hugo Baptista", 795267494960006, "Diabetes"),
   createData("Julio Hend", 111750518620005, "Diabetes"),
   createData("Carlos Alberto", 79532389, "Hipertensão"),
