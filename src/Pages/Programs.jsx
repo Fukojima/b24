@@ -256,7 +256,8 @@ console.log("AAAAAAAAAAAA", history.length)
   return (
     <>
       {history.length == 0 ? (
-<Box sx={{width:"100%", height:500,alignItems:"center", justifyContent:"center", justifyItems:"center", display:"flex" }}>
+<Box sx={{width:"100%", height:500,
+alignItems:"center", justifyContent:"center", justifyItems:"center", display:"flex" }}>
 
                 
             <CircularProgress size={100} />
