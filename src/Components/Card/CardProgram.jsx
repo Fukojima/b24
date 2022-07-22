@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import MenuField from "../Utils/MenuField";
 export default function CardProgram({program, param, describe}) {
-  console.log("adsdasda", program)
+
 
   return (
     <Card

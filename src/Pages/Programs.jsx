@@ -15,7 +15,9 @@ import DiabetesGraph from "../Components/Graphics/DiabetesGraph";
 import useHistory from "../service/useHistory";
 import MainTable from "../Components/InfoTable/MainTable";
 import OneLineGraphic from "../Components/Graphics/ComposedChart";
-import HypertensionGraph from "../Components/Graphics/HypertensionGraph"
+import HypertensionGraph from "../Components/Graphics/HypertensionGraph";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function Programs() {
   const { selectedOption } = React.useContext(AppContext);
@@ -49,13 +51,11 @@ function Programs() {
   const [diabetes, setDiabetes] = React.useState([]);
   const [pregnant, setPregnant] = React.useState([]);
   async function Historys() {
-
     const { getHistory } = useHistory();
     let detailsResponse = [];
 
     detailsResponse = await getHistory();
     setHistory(detailsResponse);
-
   }
   React.useEffect(() => {}, []);
 
@@ -118,13 +118,14 @@ function Programs() {
               <Grid>
                 <Grid sx={{ display: "flex" }}>
                   {" "}
-                  <PieGraph qt={obesity.length} datas={obesityData} /> <ObesityGraph />
+                  <PieGraph qt={obesity.length} datas={obesityData} />{" "}
+                  <ObesityGraph />
                 </Grid>
               </Grid>
             </Grid>
 
             <Grid item xs={6}>
-              <ProgramTables data={obesity}/>
+              <ProgramTables data={obesity} />
             </Grid>
             <Grid item xs={12} sx={{ display: "flex" }}>
               <AreaGraph
@@ -152,13 +153,14 @@ function Programs() {
               <Grid>
                 <Grid sx={{ display: "flex" }}>
                   {" "}
-                  <PieGraph qt={diabetes.length} datas={diabetesData} /> <DiabetesGraph />
+                  <PieGraph qt={diabetes.length} datas={diabetesData} />{" "}
+                  <DiabetesGraph />
                 </Grid>
               </Grid>
             </Grid>
 
             <Grid item xs={6}>
-              <ProgramTables data={diabetes}/>
+              <ProgramTables data={diabetes} />
             </Grid>
             <Grid item xs={12} sx={{ display: "flex" }}>
               <AreaGraph
@@ -186,13 +188,17 @@ function Programs() {
               <Grid>
                 <Grid sx={{ display: "flex" }}>
                   {" "}
-                  <PieGraph qt={hypertension.length} datas={hypertensionData} /> <HypertensionGraph />
+                  <PieGraph
+                    qt={hypertension.length}
+                    datas={hypertensionData}
+                  />{" "}
+                  <HypertensionGraph />
                 </Grid>
               </Grid>
             </Grid>
 
             <Grid item xs={6}>
-              <ProgramTables data={hypertension}/>
+              <ProgramTables data={hypertension} />
             </Grid>
             <Grid item xs={12} sx={{ display: "flex" }}>
               <AreaGraph
@@ -201,7 +207,7 @@ function Programs() {
                 value={230}
                 config={configOneLineChart}
               />
-              <VerticalBarChart data={hypertension}/>
+              <VerticalBarChart data={hypertension} />
             </Grid>
           </Grid>
         </>
@@ -239,32 +245,45 @@ serviços"
                 value={230}
                 config={configOneLineChart}
               />
-              <VerticalBarChart data={pregnant}/>
+              <VerticalBarChart data={pregnant} />
             </Grid>
           </Grid>
         </>
       );
     }
   };
-
+console.log("AAAAAAAAAAAA", history.length)
   return (
     <>
-      <ChangeCard />
-      {option == 0 || !option ? (
+      {history.length == 0 ? (
+<Box sx={{width:"100%", height:500,alignItems:"center", justifyContent:"center", justifyItems:"center", display:"flex" }}>
+
+                
+            <CircularProgress size={100} />
+
+
+          </Box>
+      ) : (
         <>
           {" "}
-          <Grid container>
-            <Grid item xs={6}>
-              <DoubleRadarChart />
-            </Grid>
-            <Grid item xs={6} sx={{ display: "flex" }}>
-              <AlocationProgramsCard />
-              <MainTable />
-            </Grid>
-          </Grid>
+          <ChangeCard />
+          {option == 0 || !option ? (
+            <>
+              {" "}
+              <Grid container>
+                <Grid item xs={6}>
+                  <DoubleRadarChart />
+                </Grid>
+                <Grid item xs={6} sx={{ display: "flex" }}>
+                  <AlocationProgramsCard />
+                  <MainTable />
+                </Grid>
+              </Grid>
+            </>
+          ) : (
+            <>{<ProgramScreens />}</>
+          )}
         </>
-      ) : (
-        <>{<ProgramScreens />}</>
       )}
     </>
   );
