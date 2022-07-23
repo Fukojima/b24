@@ -20,84 +20,78 @@ const data = [
 ];
 export default function DoubleRadarChart() {
   return (
-    <Card
-      sx={{
-        
-        marginLeft: "1rem",
-        marginTop: "7rem",
-        backgroundColor: "#F9F8F8",
-      }}
-    >
-      <Typography
-        sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
-        color="text.secondary"
-        gutterBottom
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+        }}
       >
-        Distribuição de pacientes:
-        
-      </Typography>
-      <Grid container>
-        <Grid sx={{ marginLeft: "0.5rem" }} xs={2}>
-          <Typography
-            sx={{ fontSize: 14, marginLeft: "0.5rem" }}
-            color="text.secondary"
-            gutterBottom
-          >
+        <Box
+          sx={{
+            marginTop: "20px",
+            display: "flex",
+            gap: "20px",
+          }}
+        >
+          <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
             <Box
               sx={{
                 display: "inline-flex",
-                width: 10,
+                width: 30,
                 height: 10,
+                borderRadius: "10px",
                 backgroundColor: "#5CBFE2",
                 marginRight: "0.5rem",
               }}
             />
             Masc.
           </Typography>
-        </Grid>
-        <Grid sx={{ marginLeft: "0.5rem" }} xs={2}>
-          <Typography
-            sx={{ fontSize: 14, marginLeft: "0.5rem" }}
-            color="text.secondary"
-            gutterBottom
-          >
+          <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
             <Box
               sx={{
                 display: "inline-flex",
-                width: 10,
+                width: 30,
                 height: 10,
+                borderRadius: "10px",
                 backgroundColor: "#FD9BE9",
                 marginRight: "0.5rem",
               }}
             />
             Fem.
           </Typography>
-        </Grid>
-      </Grid>
+        </Box>
+        <Box
+          sx={{
+            width: "600px",
+            height: "320px",
+          }}
+        >
+          <ResponsiveContainer>
+            <RadarChart outerRadius="80%" data={data}>
+              <PolarGrid />
+              <PolarAngleAxis
+                dataKey="name"
+                tick={{ fontFamily: "Rubik", fill: "rgba(0, 0, 0, 0.6)" }}
+              />
 
-      <ResponsiveContainer height={375} >
-        <RadarChart outerRadius="80%" data={data}>
-          <PolarGrid />
-          <PolarAngleAxis
-            dataKey="name"
-            tick={{ fontFamily: "Rubik", fill: "rgba(0, 0, 0, 0.6)" }}
-          />
-
-          <PolarRadiusAxis />
-          <Radar
-            dataKey="f"
-            stroke="#FD9BE9"
-            fill="#FD9BE9"
-            fillOpacity={0.5}
-          />
-          <Radar
-            dataKey="m"
-            stroke="#5CBFE2"
-            fill="#5CBFE2"
-            fillOpacity={0.5}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
-    </Card>
+              <PolarRadiusAxis />
+              <Radar
+                dataKey="f"
+                stroke="#FD9BE9"
+                fill="#FD9BE9"
+                fillOpacity={0.5}
+              />
+              <Radar
+                dataKey="m"
+                stroke="#5CBFE2"
+                fill="#5CBFE2"
+                fillOpacity={0.5}
+              />
+            </RadarChart>
+          </ResponsiveContainer>
+        </Box>
+      </Box>
+    </>
   );
 }

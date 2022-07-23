@@ -74,73 +74,69 @@ export default function MainTable() {
   return (
     <Box
       sx={{
-        width: '70%',
-        height: 400,
-        marginLeft: "1rem",
-        marginRight:"1rem",
-        marginTop: "1rem",
-        backgroundColor: "#F9F8F8",
+        marginTop: "10px",
       }}
     >
-      <ResponsiveContainer>
-        <Paper sx={{ overflow: "hidden" }}>
-          <TableContainer
-            sx={{ height: 485, color: "white", backgroundColor: "#F9F8F8" }}
-          >
-            <Table stickyHeader aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                    sx={{backgroundColor:"#8AB3CC",color:"white"}}
-                      key={column.id}
+      <Paper sx={{ overflow: "hidden", boxShadow: "none" }}>
+        <TableContainer
+          sx={{ height: 485, color: "white", backgroundColor: "#F9F8F8" }}
+        >
+          <Table stickyHeader aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    sx={{ backgroundColor: "#6462E8", color: "white" }}
+                    key={column.id}
+                    align="center"
+                    style={{ minWidth: column.minWidth }}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => {
+                  return (
+                    <TableRow
+                      hover
+                      role="checkbox"
                       align="center"
-                      style={{ minWidth: column.minWidth }}
+                      tabIndex={-1}
+                      sx={{
+                        backgroundColor: "white",
+                      }}
+                      key={row.code}
                     >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
-                    return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        align="center"
-                        tabIndex={-1}
-                        key={row.code}
-                      >
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          return (
-                            <TableCell key={column.id} align="center">
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 100]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </ResponsiveContainer>
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        return (
+                          <TableCell key={column.id} align="center">
+                            {column.format && typeof value === "number"
+                              ? column.format(value)
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
     </Box>
   );
 }

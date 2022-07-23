@@ -16,21 +16,24 @@ import useHistory from "../service/useHistory";
 import MainTable from "../Components/InfoTable/MainTable";
 import OneLineGraphic from "../Components/Graphics/ComposedChart";
 import HypertensionGraph from "../Components/Graphics/HypertensionGraph";
-const StyledContainer = styled(Box)({
+const StyledContainer = styled(Box)((props) => ({
   backgroundColor: "white",
   padding: "10px",
   width: "100%",
   borderRadius: 5,
-  flexGrow: 1,
-});
-const ContentContainer = styled(Box)({
+  ...props?.sx,
+}));
+
+const ContentContainer = styled(Box)((props) => ({
   width: "100%",
   display: "flex",
   justifyContent: "center",
   maxWidth: "1280px",
   margin: "10px auto",
   padding: 10,
-});
+  ...props?.sx,
+}));
+
 function Programs() {
   const { selectedOption } = React.useContext(AppContext);
   const configOneLineChart = [{ key: "uv" }];
@@ -277,25 +280,66 @@ serviços"
           <StyledContainer>
             <ChangeCard />
           </StyledContainer>
-          {option == 0 || (!option && <StyledContainer></StyledContainer>)}
+
+          {option == 0 || !option ? (
+            <StyledContainer>
+              <Typography
+                sx={{
+                  fontFamily: "Rubik",
+                  fontWeight: "bold",
+                  color: "#6462E8",
+                }}
+              >
+                Distribuição de Pacientes
+              </Typography>
+              <DoubleRadarChart />
+            </StyledContainer>
+          ) : (
+            <></>
+          )}
         </Grid>
         {option == 0 || !option ? (
           <>
             <Grid item container xs={4}>
-              <StyledContainer></StyledContainer>
+              <StyledContainer
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                {" "}
+                {/* <Typography
+                  sx={{
+                    fontSize: 16,
+                    fontFamily: "Rubik",
+                    fontWeight: "bold",
+                    color: "#6462E8",
+                  }}
+                >
+                  Detalhamento dos Pacientes
+                </Typography> */}
+                <AlocationProgramsCard />
+              </StyledContainer>
             </Grid>
             <Grid item xs={12}>
-              <StyledContainer></StyledContainer>
-            </Grid>{" "}
-            <Grid container>
-              <Grid item xs={6}>
-                <DoubleRadarChart />
-              </Grid>
-              <Grid item xs={6} sx={{ display: "flex" }}>
-                <AlocationProgramsCard />
+              <StyledContainer
+                sx={{
+                  marginBottom: "30px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Rubik",
+                    fontWeight: "bold",
+                    color: "#6462E8",
+                  }}
+                >
+                  Tabela de Dados
+                </Typography>
                 <MainTable />
-              </Grid>
-            </Grid>
+              </StyledContainer>
+            </Grid>{" "}
           </>
         ) : (
           <>{<ProgramScreens />}</>

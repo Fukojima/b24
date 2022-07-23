@@ -33,12 +33,10 @@ const programs = [
 export default function MenuField() {
   const { selectedOption, setSelectedOption } = React.useContext(AppContext);
 
-
-
   return (
     <TextField
-    fullWidth
-    size="small"
+      fullWidth
+      size="small"
       select
       value={selectedOption}
       onChange={({ target: { value } }) => setSelectedOption(value)}
@@ -47,7 +45,7 @@ export default function MenuField() {
     >
       {programs.map((option) => {
         return (
-          <MenuItem  key={option.id} value={option.id}>
+          <MenuItem key={option.id} value={option.id}>
             {option.label}
           </MenuItem>
         );
