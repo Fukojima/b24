@@ -13,42 +13,33 @@ import {
 } from "@mui/material";
 import MenuField from "../Utils/MenuField";
 export default function ChangeCard() {
-  
-
   return (
-    <Card
-      item
+    <Box
       sx={{
-        position:"absolute",
-        padding: 1,
-        width: 740,
-        height: "5rem ",
-        marginTop: "1rem",
-        marginLeft: "1rem",
-        marginBottom:"1rem",
-        backgroundColor: "#F9F8F8",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
       }}
     >
-      <CardContent >
-        <Grid container sx={{ display: "flex" }} >
-        <Grid xs={7}>
-          {" "}
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-       Estatísticas dos programas 
-          </Typography>
-          <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
+      <Box>
+        <Typography
+          sx={{ fontFamily: "Rubik", fontWeight: "bold", color: "#6462E8" }}
+        >
+          Estatísticas dos programas
+        </Typography>
+
+        <Typography sx={{ fontSize: 14, color: "#6462E8" }} gutterBottom>
           Ultima atualização: 20/07/2022 às 15:42
         </Typography>
-        </Grid>
-        <Grid xs={5} >
-          <MenuField />{" "}
-        </Grid>
-        </Grid>
-
-        {/*         
-
-       */}
-      </CardContent>
-    </Card>
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "300px",
+        }}
+      >
+        <MenuField />{" "}
+      </Box>
+    </Box>
   );
 }

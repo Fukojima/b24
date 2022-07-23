@@ -1,81 +1,101 @@
 import * as React from "react";
-import useDetails from "../../service/useDetails"
-import {
-  Typography,
-  Button,
-  Card,
-  CardContent,
-  CardActions,
-  Box,
-  Divider,
-  Grid,
-} from "@mui/material";
-export default  function InfoCard() {
-  const [details, setDetails] = React.useState([]) 
+import useDetails from "../../service/useDetails";
+import { Typography, Box, Divider, Grid, Avatar } from "@mui/material";
+import { blue } from "@material-ui/core/colors";
+import { LocalHospitalRounded } from "@mui/icons-material";
+export default function InfoCard() {
+  const [details, setDetails] = React.useState([]);
   const [service, setService] = React.useState("");
 
-  const month = 3
+  const month = 3;
   React.useEffect(() => {
-    Services(month)
+    Services(month);
   }, [service]);
 
- 
-
-
-  
-  
   async function Services(month) {
-    const {getDetails} = useDetails();
+    const { getDetails } = useDetails();
     let detailsResponse = [];
-  
-   detailsResponse = await getDetails(month);
+
+    detailsResponse = await getDetails(month);
     setDetails(detailsResponse[0].services);
   }
-  
 
+  const services = details?.map((item) => {
+    console.log(item.quantity);
+    return (
+      <>
+        <Box
+          sx={{
+            display: "flex",
+          }}
+        >
+          <Typography color="text.secondary">
+            {!!item?.service &&
+              item.service.charAt(0).toUpperCase() +
+                item.service.slice(1, item.service.length).toLowerCase()}
+            <b> : </b>
+          </Typography>
+          <Grid xs={2}>
+            <Typography
+              color="text.secondary"
+              sx={{
+                marginLeft: "5px",
+                display: "inline-block",
+                fontWeight: "bold",
+              }}
+            >
+              {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
+            </Typography>
+          </Grid>
+        </Box>
+      </>
+    );
+  });
 
-const services = details?.map((item)=>{
   return (
-    <>
-    <Grid container  sx={{ mt: 1,  }} >
-    <Grid xs={8}>
-      <Typography
-        sx={{ mb: 0.1 }}
-        color="text.secondary"
-      >
-        {item.service}<b> :</b>
-      </Typography>
-    </Grid>
-    <Grid xs={2} >
-      <Typography color="text.secondary">{item.quantity}</Typography>
-    </Grid>
-  </Grid>
-  </>
-  );
-}) 
-
-
-  return (
-    <Card
-      item
+    <Box
       sx={{
-        width: "22rem",
-        height: "32rem",
-        marginTop: "5rem",
-        position: "absolute",
-        backgroundColor:"#F9F8F8"
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
       }}
     >
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Detalhamento
-        </Typography>
-        <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
-          Ultima atualização: 10/01/2022 às 18:42
-        </Typography>
-        <Divider sx={{ backgroundColor: "#b1aeae", opacity: "0.5" }} />
-    {services}
-      </CardContent>
-    </Card>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Box sx={{}}>
+          <Typography
+            sx={{
+              fontSize: 16,
+              fontFamily: "Rubik",
+              fontWeight: "bold",
+              color: "#6462E8",
+            }}
+          >
+            Detalhamento dos Serviços
+          </Typography>
+          <Typography sx={{ fontSize: 14, color: "#6462E8" }} gutterBottom>
+            Última atualização:{" "}
+            <Typography component="span" variant="inherit" sx={{}}>
+              10/01/2022 às 18:42
+            </Typography>
+          </Typography>
+        </Box>
+        <Avatar
+          sx={{
+            marginRight: "10px",
+            backgroundColor: "#6452E8",
+          }}
+        >
+          <LocalHospitalRounded />
+        </Avatar>
+      </Box>
+      <Divider sx={{ backgroundColor: "#b1aeae", opacity: "0.2" }} />
+      {services}
+    </Box>
   );
 }

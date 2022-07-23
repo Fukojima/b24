@@ -43,7 +43,6 @@ export default function AlocationProgramsCard() {
   return (
     <Card
       sx={{
-
         height: 540,
         padding: 1,
         marginLeft: "1rem",
@@ -52,37 +51,32 @@ export default function AlocationProgramsCard() {
       }}
     >
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Total Pacientes:
+        Total Pacientes
       </Typography>
       <ResponsiveContainer width="100%" height={150}>
-      <PieChart
-       radius={PieChart.defaultProps.radius - shiftSize}
-       segmentsShift={(index) => (index === 0 ? shiftSize : 0.5)}
-       animate={true}
-     >
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          dataKey="value" // make sure to map the dataKey to "value"
-          innerRadius={40} // the inner and outer radius helps to create the progress look
-          outerRadius={50}
+        <PieChart
+          radius={PieChart.defaultProps.radius - shiftSize}
+          segmentsShift={(index) => (index === 0 ? shiftSize : 0.5)}
+          animate={true}
         >
-          {data.map((entry, index) => {
-            if (index === 1) {
-              return <Cell key={`cell-${index}`} fill="#f3f6f9" />; // make sure to map the index to the colour you want
-            }
-            return <Cell key={`cell-${index}`} fill="#8AB3CC"/>;
-          })}
-          <Label
-            value={`137`}
-            position="center"
-   
-
-          />
-        </Pie>
-      </PieChart>
-</ResponsiveContainer>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            dataKey="value" // make sure to map the dataKey to "value"
+            innerRadius={40} // the inner and outer radius helps to create the progress look
+            outerRadius={50}
+          >
+            {data.map((entry, index) => {
+              if (index === 1) {
+                return <Cell key={`cell-${index}`} fill="#f3f6f9" />; // make sure to map the index to the colour you want
+              }
+              return <Cell key={`cell-${index}`} fill="#8AB3CC" />;
+            })}
+            <Label value={`137`} position="center" />
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         Alocação de pacientes por programa:
       </Typography>

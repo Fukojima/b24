@@ -1,40 +1,41 @@
 import { createTheme } from "@mui/material";
-import { ptBR } from '@mui/material/locale';
-import "@fontsource/source-sans-pro"; 
+import { ptBR } from "@mui/material/locale";
+import "@fontsource/source-sans-pro";
 import customScrollbar from "../Components/CustomStyles/ScrollBar";
-
 
 let theme = createTheme(
   {
     palette: {
       background: {
-        default: "#F0F3FF"
+        default: "#F0F3FF",
       },
       primary: {
-        main: "#9AC0D8",
+        main: "#6749ED",
         light: "#16679A",
         medium: "#EAF6FF",
-        font: "#8AB3CC",
+        font: "#6749ED",
       },
       secondary: {
         main: "#337EAD",
         light: "#F5FBFF",
         medium: "#0899BA",
       },
+      text: {
+        primary: "#333F48",
+        secondary: "#979FA5",
+      },
     },
     typography: {
-      fontFamily: ["Rubik", "sans-serif"].join(","),
+      fontFamily: ["Maven Pro", "Rubik"].join(","),
     },
   },
   ptBR
 );
-const scrollbarColor = "green";
 theme = createTheme(theme, {
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        body:
-       customScrollbar()
+        body: customScrollbar(),
       },
     },
     MuiMenu: {
@@ -80,10 +81,10 @@ theme = createTheme(theme, {
       styleOverrides: {
         root: {
           color: theme.palette.primary.light,
-          fontWeight:"medium",
+          fontWeight: "medium",
           "&.Mui-disabled": {
             color: "#9AC0D8",
-            backgroundColor:"rgba(216, 0, 0, 0.1)"
+            backgroundColor: "rgba(216, 0, 0, 0.1)",
           },
           "&.Mui-selected": {
             color: "white",
@@ -95,11 +96,11 @@ theme = createTheme(theme, {
         },
       },
     },
-    MuiTypography:{
-      styleOverrides:{
-        root:{}
-      }
-    }
+    MuiTypography: {
+      styleOverrides: {
+        root: {},
+      },
+    },
   },
 });
 

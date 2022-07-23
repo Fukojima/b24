@@ -26,7 +26,7 @@ export default function ProfileMenu() {
   };
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+      {/* <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Meu perfil">
           <IconButton
             onClick={handleClick}
@@ -40,7 +40,7 @@ export default function ProfileMenu() {
           </IconButton>
 
         </Tooltip>
-      </Box>
+      </Box> */}
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
