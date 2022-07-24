@@ -122,107 +122,264 @@ function Programs() {
   const ProgramScreens = (value) => {
     if (option == 5) {
       return (
-        <>
-          <Grid container>
-            <Grid item xs={6}>
+        <Grid item xs={12} container sx={{}}>
+          <Grid item xs={6}>
+            <StyledContainer
+              sx={{
+                flexGrow: 1,
+              }}
+            >
               <CardProgram
                 program="Obesidade"
                 describe="O Programa de Obesidade tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes"
                 param="IMC > 30"
               />
-              <Grid>
-                <Grid sx={{ display: "flex" }}>
-                  {" "}
-                  <PieGraph qt={obesity.length} datas={obesityData} />{" "}
-                  <ObesityGraph />
-                </Grid>
+            </StyledContainer>
+            <Grid>
+              <Grid sx={{ display: "flex" }}>
+                {" "}
+                <PieGraph qt={obesity.length} datas={obesityData} />{" "}
+                <ObesityGraph />
               </Grid>
             </Grid>
-
-            <Grid item xs={6}>
-              <ProgramTables data={obesity} />
-            </Grid>
-            <Grid item xs={12} sx={{ display: "flex" }}>
-              <AreaGraph
-                datas={obesity}
-                title="Pacientes Operados"
-                value={230}
-                config={configOneLineChart}
-              />
-              <VerticalBarChart data={obesity} />
-            </Grid>
           </Grid>
-        </>
+
+          <Grid item xs={6}>
+            <ProgramTables data={obesity} />
+          </Grid>
+          <Grid item xs={12} sx={{ display: "flex" }}>
+            <AreaGraph
+              datas={obesity}
+              title="Pacientes Operados"
+              value={230}
+              config={configOneLineChart}
+            />
+            <VerticalBarChart data={obesity} />
+          </Grid>
+        </Grid>
       );
     }
     if (option == 1) {
       return (
-        <>
-          <Grid container>
-            <Grid item xs={6}>
+        <Grid item xs={12} container spacing={2}>
+          <Grid
+            item
+            xs={6}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <StyledContainer
+              sx={{
+                flexGrow: 1,
+              }}
+            >
               <CardProgram
                 program="Diabetes"
                 describe="O Programa de Diabetes tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes"
                 param="mg/d > 126"
               />
-              <Grid>
-                <Grid sx={{ display: "flex" }}>
-                  {" "}
-                  <PieGraph qt={diabetes.length} datas={diabetesData} />{" "}
-                  <DiabetesGraph />
-                </Grid>
-              </Grid>
-            </Grid>
-
-            <Grid item xs={6}>
-              <ProgramTables data={diabetes} />
-            </Grid>
-            <Grid item xs={12} sx={{ display: "flex" }}>
+            </StyledContainer>
+          </Grid>
+          <Grid
+            item
+            xs={3}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <StyledContainer
+              sx={{
+                flexGrow: 1,
+              }}
+            >
+              <PieGraph qt={diabetes.length} datas={diabetesData} />{" "}
+            </StyledContainer>
+          </Grid>
+          <Grid
+            item
+            xs={3}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <StyledContainer
+              sx={{
+                flexGrow: 1,
+              }}
+            >
+              <DiabetesGraph />
+            </StyledContainer>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <StyledContainer
+              sx={{
+                flexGrow: 1,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "Rubik",
+                  fontWeight: "bold",
+                  color: "#6462E8",
+                }}
+              >
+                Faixa Etária
+              </Typography>
               <AreaGraph
                 datas={diabetes}
                 title="Pacientes Operados"
                 value={230}
                 config={configOneLineChart}
               />
-              <VerticalBarChart data={diabetes} />
-            </Grid>
+            </StyledContainer>
           </Grid>
-        </>
+          <Grid
+            item
+            xs={6}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <StyledContainer
+              sx={{
+                flexGrow: 1,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "Rubik",
+                  fontWeight: "bold",
+                  color: "#6462E8",
+                }}
+              >
+                Alocação demográfica
+              </Typography>
+              <VerticalBarChart data={diabetes} />
+            </StyledContainer>
+          </Grid>
+          <Grid item xs={12}>
+            <StyledContainer
+              sx={{
+                marginBottom: "20px",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "Rubik",
+                  fontWeight: "bold",
+                  color: "#6462E8",
+                  marginBottom: "10px",
+                }}
+              >
+                Tabela de Dados
+              </Typography>
+              <ProgramTables data={diabetes} />
+            </StyledContainer>
+          </Grid>
+        </Grid>
       );
     }
     if (option == 2) {
       return (
         <>
-          <Grid container>
-            <Grid item xs={6}>
-              <CardProgram
-                program="Hipertensão"
-                describe="O Programa de Hipertensão tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes"
-                param="PAD (mmHg) > 90"
-              />
-              <Grid>
-                <Grid sx={{ display: "flex" }}>
-                  {" "}
-                  <PieGraph
-                    qt={hypertension.length}
-                    datas={hypertensionData}
-                  />{" "}
-                  <HypertensionGraph />
-                </Grid>
-              </Grid>
+          <Grid item xs={12} container spacing={2}>
+            <Grid
+              item
+              xs={6}
+              sx={{
+                display: "flex",
+              }}
+            >
+              <StyledContainer
+                sx={{
+                  flexGrow: 1,
+                }}
+              >
+                <CardProgram
+                  program="Hipertensão"
+                  describe="O Programa de Hipertensão tem como principal objetivo promover a saúde e aumentar a qualidade de vida dos diabéticos, orientando os pacientes no intuito de prevenir riscos, agravos e doenças decorrentes do diabetes"
+                  param="PAD (mmHg) > 90"
+                />
+              </StyledContainer>
             </Grid>
-
+            <Grid
+              item
+              xs={3}
+              sx={{
+                display: "flex",
+              }}
+            >
+              <StyledContainer
+                sx={{
+                  flexGrow: 1,
+                }}
+              >
+                <PieGraph qt={hypertension.length} datas={hypertensionData} />
+              </StyledContainer>
+            </Grid>
+            <Grid
+              item
+              xs={3}
+              sx={{
+                display: "flex",
+              }}
+            >
+              <StyledContainer>
+                <HypertensionGraph />
+              </StyledContainer>
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              sx={{
+                display: "flex",
+              }}
+            >
+              <StyledContainer
+                sx={{
+                  flexGrow: 1,
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Rubik",
+                    fontWeight: "bold",
+                    color: "#6462E8",
+                  }}
+                >
+                  Faixa Etária
+                </Typography>
+                <AreaGraph
+                  datas={hypertension}
+                  title="Pacientes Operados"
+                  value={230}
+                  config={configOneLineChart}
+                />
+              </StyledContainer>
+            </Grid>
             <Grid item xs={6}>
+              <StyledContainer>
+                <Typography
+                  sx={{
+                    fontFamily: "Rubik",
+                    fontWeight: "bold",
+                    color: "#6462E8",
+                  }}
+                >
+                  Alocação demográfica
+                </Typography>
+                <VerticalBarChart data={hypertension} />
+              </StyledContainer>
+            </Grid>
+            <Grid item xs={12} marginBottom={4}>
               <ProgramTables data={hypertension} />
-            </Grid>
-            <Grid item xs={12} sx={{ display: "flex" }}>
-              <AreaGraph
-                datas={hypertension}
-                title="Pacientes Operados"
-                value={230}
-                config={configOneLineChart}
-              />
-              <VerticalBarChart data={hypertension} />
             </Grid>
           </Grid>
         </>
@@ -231,36 +388,82 @@ function Programs() {
     if (option == 3) {
       return (
         <>
-          <Grid container>
-            <Grid item xs={6}>
-              <CardProgram
-                program="Gestante"
-                describe="O objetivo é o desenvolvimento de ações de prénatal, acompanhamento e tratamento das doenças
+          <Grid item xs={12} container spacing={2}>
+            <Grid
+              item
+              xs={6}
+              sx={{
+                display: "flex",
+              }}
+            >
+              <StyledContainer
+                sx={{
+                  flexGrow: 1,
+                }}
+              >
+                <CardProgram
+                  program="Gestante"
+                  describe="O objetivo é o desenvolvimento de ações de prénatal, acompanhamento e tratamento das doenças
 incluídas no Programa promovendo o acesso, o
 incremento da qualidade e da capacidade
 instalada do serviço de referência e dos demais
 serviços"
-                param="mIU/ml > 25"
-              />
-              <Grid>
-                <Grid sx={{ display: "flex" }}>
-                  {" "}
-                  <OneLineGraphic />
-                </Grid>
-              </Grid>
+                  param="mIU/ml > 25"
+                />
+              </StyledContainer>
             </Grid>
-
             <Grid item xs={6}>
-              <ProgramTables data={pregnant} />
+              <StyledContainer>
+                <OneLineGraphic />
+              </StyledContainer>
             </Grid>
-            <Grid item xs={12} sx={{ display: "flex" }}>
-              <AreaGraph
-                datas={pregnant}
-                title="Pacientes Operados"
-                value={230}
-                config={configOneLineChart}
-              />
-              <VerticalBarChart data={pregnant} />
+            <Grid
+              item
+              xs={6}
+              sx={{
+                display: "flex",
+              }}
+            >
+              <StyledContainer
+                sx={{
+                  flex: 1,
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Rubik",
+                    fontWeight: "bold",
+                    color: "#6462E8",
+                  }}
+                >
+                  Faixa Etária
+                </Typography>
+                <AreaGraph
+                  datas={pregnant}
+                  title="Pacientes Operados"
+                  value={230}
+                  config={configOneLineChart}
+                />
+              </StyledContainer>
+            </Grid>
+            <Grid item xs={6}>
+              <StyledContainer>
+                <Typography
+                  sx={{
+                    fontFamily: "Rubik",
+                    fontWeight: "bold",
+                    color: "#6462E8",
+                  }}
+                >
+                  Alocação demográfica
+                </Typography>
+                <VerticalBarChart data={pregnant} />
+              </StyledContainer>
+            </Grid>
+            <Grid item xs={12} marginBottom={"20px"}>
+              <StyledContainer>
+                <ProgramTables data={pregnant} />
+              </StyledContainer>
             </Grid>
           </Grid>
         </>

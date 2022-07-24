@@ -9,6 +9,7 @@ import {
 } from "recharts";
 import { Card, Typography, Grid } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+import { Box } from "@mui/system";
 const COLORS = ["#9AC0D8", "#75a6c5", "#6e8898"];
 const data01 = [
   { name: "Hipertensão I", value: 56, color: "#9AC0D8" },
@@ -40,21 +41,20 @@ const renderCustomizedLabel = ({ x, y, value }) => {
 
 export default function DiabetesGraph() {
   return (
-    <Card
-      sx={{
-        width: 290,
-        marginTop: "1rem",
-        marginLeft: "1rem",
-        padding: 1,
-        backgroundColor: "#F9F8F8",
-      }}
-    >
+    <Box>
       <Typography
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          fontSize: 16,
+          fontWeight: "bold",
+          fontFamily: "Rubik",
+          color: "#6462E8",
+          textAlign: "center",
+        }}
+        color="text.secondary"
       >
         Classificação
       </Typography>
-      <Grid container>
+      <Grid container marginTop={2}>
         <Grid item xs={4}>
           {" "}
           <Typography
@@ -89,7 +89,7 @@ export default function DiabetesGraph() {
               fontSize="small"
               style={{ color: "#75a6c5", marginRight: "0.2rem" }}
             />{" "}
-             Hipertensão II
+            Hipertensão II
           </Typography>
         </Grid>
         <Grid item xs={4}>
@@ -107,11 +107,10 @@ export default function DiabetesGraph() {
               fontSize="small"
               style={{ color: "#6e8898", marginRight: "0.2rem" }}
             />{" "}
-          Hipertensão 3
+            Hipertensão 3
           </Typography>
         </Grid>
       </Grid>
-
       <ResponsiveContainer width="100%" height={150}>
         <PieChart>
           <Pie
@@ -132,6 +131,6 @@ export default function DiabetesGraph() {
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
-    </Card>
+    </Box>
   );
 }

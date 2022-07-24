@@ -21,14 +21,14 @@ const programs = [
     label: "Gestante",
     id: 3,
   },
-  {
-    label: "Melhor Idade",
-    id: 4,
-  },
-  {
-    label: "Obesidade",
-    id: 5,
-  },
+  // {
+  //   label: "Melhor Idade",
+  //   id: 4,
+  // },
+  // {
+  //   label: "Obesidade",
+  //   id: 5,
+  // },
 ];
 export default function MenuField() {
   const { selectedOption, setSelectedOption } = React.useContext(AppContext);

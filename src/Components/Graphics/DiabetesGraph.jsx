@@ -7,7 +7,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import { Card, Typography, Grid } from "@mui/material";
+import { Card, Typography, Grid, Box } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
 const COLORS = ["#9AC0D8", "#75a6c5", "#6e8898"];
 const data01 = [
@@ -40,22 +40,32 @@ const renderCustomizedLabel = ({ x, y, value }) => {
 
 export default function DiabetesGraph() {
   return (
-    <Card
+    <Box
       sx={{
-        width:'50%',
-        marginTop: "1rem",
-        marginLeft:"1rem",
-        marginRight: "1rem",
-        padding: 1,
-        backgroundColor: "#F9F8F8",
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
       <Typography
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          color: "#6462E8",
+          fontFamily: "Rubik",
+          fontWeight: "bold",
+        }}
       >
         Classificação
+        <Typography
+          variant="inherit"
+          fontWeight="bold"
+          sx={{
+            color: "#6462E8",
+          }}
+          component="span"
+        ></Typography>
       </Typography>
-      <Grid container>
+      <Grid container marginTop={3}>
         <Grid item xs={4}>
           {" "}
           <Typography
@@ -90,7 +100,7 @@ export default function DiabetesGraph() {
               fontSize="small"
               style={{ color: "#75a6c5", marginRight: "0.2rem" }}
             />{" "}
-             Diabetes II
+            Diabetes II
           </Typography>
         </Grid>
         <Grid item xs={4}>
@@ -108,7 +118,7 @@ export default function DiabetesGraph() {
               fontSize="small"
               style={{ color: "#6e8898", marginRight: "0.2rem" }}
             />{" "}
-           Diabetes LADA
+            Diabetes LADA
           </Typography>
         </Grid>
       </Grid>
@@ -133,6 +143,6 @@ export default function DiabetesGraph() {
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
-    </Card>
+    </Box>
   );
 }

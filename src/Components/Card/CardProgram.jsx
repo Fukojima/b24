@@ -1,63 +1,63 @@
 import * as React from "react";
 import useDetails from "../../service/useDetails";
 
-import {
-  Typography,
-  Button,
-  Card,
-  CardContent,
-  CardActions,
-  Box,
-  Divider,
-  Grid,
-} from "@mui/material";
+import { Typography, Button, Box, Divider, Grid, Avatar } from "@mui/material";
 import MenuField from "../Utils/MenuField";
-export default function CardProgram({program, param, describe}) {
-  console.log("adsdasda", program)
-
+import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+export default function CardProgram({ program, param, describe }) {
   return (
-    <Card
-    sx={{
-
-      padding:1,
-      marginLeft: "1rem",
-      marginRight:"1rem",
-      marginTop: "7rem",
-      backgroundColor: "#F9F8F8",
-    }}
-  >
-     <Typography
-        sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
-        color="text.secondary"
-        gutterBottom
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+      }}
+    >
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
       >
-
-        Critérios de entrada no programa de {program}:
+        <Typography
+          sx={{
+            fontSize: 16,
+            fontWeight: "bold",
+            fontFamily: "Rubik",
+            color: "#6462E8",
+          }}
+          color="text.secondary"
+        >
+          Critérios de entrada no programa de {program}
+        </Typography>
+        <Avatar
+          sx={{
+            color: "white",
+            backgroundColor: "#6462E8",
+          }}
+        >
+          <HealthAndSafetyIcon />
+        </Avatar>
+      </Box>
+      <Divider />
+      <Typography sx={{ fontSize: 16, color: "rgba(100, 98, 232, 0.5)" }}>
+        {param}
       </Typography>
-      
-      <Typography
-        sx={{ fontSize: 12, marginTop: "1rem", marginLeft: "1rem" }}
-        color="text.secondary"
-        gutterBottom
-      >
-       {param}
+      <Typography sx={{ fontSize: 16, fontWeight: "bold", color: "#6462E8" }}>
+        Sobre o Programa:
       </Typography>
       <Typography
-        sx={{ fontSize: 14, marginTop: "1rem", marginLeft: "1rem" }}
+        sx={{
+          fontSize: 16,
+          fontFamily: "Maven Pro",
+          color: "rgba(100, 98, 232, 0.5)",
+        }}
         color="text.secondary"
-        gutterBottom
-      >
-       Sobre o Programa:
-      </Typography>
-      <Typography
-        sx={{ fontSize: 12, marginTop: "1rem", marginLeft: "1rem" }}
-        color="text.secondary"
-        gutterBottom
       >
         {describe}
-   
       </Typography>
-
-  </Card>
+    </Box>
   );
 }

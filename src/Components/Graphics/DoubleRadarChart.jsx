@@ -13,7 +13,7 @@ import {
 import { Grid, Typography, Box } from "@mui/material";
 const data = [
   { name: "Hipertensão", m: 16, f: 20 },
-  { name: "Obesidade", m: 22, f: 8 },
+  // { name: "Obesidade", m: 22, f: 8 },
   { name: "Diabetes", m: 12, f: 13 },
   // { name: "Melhor Idade", m: 20, f: 7 },
   { name: "Gestante", m: 0, f: 17 },

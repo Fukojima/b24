@@ -78,10 +78,10 @@ function Row(props) {
         </TableCell>
         <TableCell align="center">{row?.cardId}</TableCell>
         <TableCell align="center">{row?.motherName}</TableCell>
-        <TableCell align="center">                            {format(
-                              new Date(row.birthDate),
-                              "dd/MM/yyyy"
-                            )}</TableCell>
+        <TableCell align="center">
+          {" "}
+          {format(new Date(row.birthDate), "dd/MM/yyyy")}
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -291,73 +291,70 @@ export default function ProgramsTables({ data }) {
     setPage(0);
   };
   return (
-    <Card
-      sx={{
-        marginTop: "1rem",
-        marginRight: "1rem",
-        backgroundColor: "#F9F8F8",
-      }}
-    >
-      <ResponsiveContainer>
-        <Paper sx={{ overflow: "hidden" }}>
-          <TableContainer
+    <ResponsiveContainer>
+      <Paper sx={{ overflow: "hidden", boxShadow: "none" }}>
+        <TableContainer
+          sx={{
+            height: 485,
+            width: "100%",
+            color: "white",
+          }}
+        >
+          <Table
+            stickyHeader
+            aria-label="customized table"
             sx={{
-              height: 485,
-              width: "100%",
-              color: "white",
-              backgroundColor: "#F9F8F8",
+              boxShadow: "none",
             }}
           >
-            <Table stickyHeader aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    sx={{ backgroundColor: "#8AB3CC", color: "white" }}
-                  />
-                  <TableCell
-                    sx={{ backgroundColor: "#8AB3CC", color: "white" }}
-                    align="center"
-                  >
-                    Paciente{" "}
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#8AB3CC", color: "white" }}
-                    align="center"
-                  >
-                    Carteira
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#8AB3CC", color: "white" }}
-                    align="center"
-                  >
-                    Nome Mãe
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#8AB3CC", color: "white" }}
-                    align="center"
-                  >
-                    Data Nascimento
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data?.map((row) => (
-                  <Row key={row.patientName} row={row} />
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 100]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </ResponsiveContainer>
-    </Card>
+            <TableHead>
+              <TableRow>
+                <TableCell
+                  sx={{ backgroundColor: "#6462E8", color: "white" }}
+                />
+                <TableCell
+                  sx={{ backgroundColor: "#6462E8", color: "white" }}
+                  align="center"
+                >
+                  Paciente{" "}
+                </TableCell>
+                <TableCell
+                  sx={{ backgroundColor: "#6462E8", color: "white" }}
+                  align="center"
+                >
+                  Carteira
+                </TableCell>
+                <TableCell
+                  sx={{ backgroundColor: "#6462E8", color: "white" }}
+                  align="center"
+                >
+                  Nome Mãe
+                </TableCell>
+                <TableCell
+                  sx={{ backgroundColor: "#6462E8", color: "white" }}
+                  align="center"
+                >
+                  Data Nascimento
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data?.map((row) => (
+                <Row key={row.patientName} row={row} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </ResponsiveContainer>
   );
 }
