@@ -472,6 +472,17 @@ serviços"
   };
 
   return (
+    
+    
+      {history.length == 0 ? (
+<Box sx={{width:"100%", height:500,
+alignItems:"center", justifyContent:"center", justifyItems:"center", display:"flex" }}>
+
+                
+            <CircularProgress size={100} />
+
+
+          </Box>):(
     <ContentContainer>
       <Grid container spacing={2}>
         <Grid
@@ -549,7 +560,7 @@ serviços"
         )}
       </Grid>
     </ContentContainer>
-  );
+  );)}
 }
 
 export default Programs;
