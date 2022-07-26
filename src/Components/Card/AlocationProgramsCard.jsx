@@ -13,7 +13,7 @@ import PregnantWomanIcon from "@mui/icons-material/PregnantWoman";
 import HeartBrokenIcon from "@mui/icons-material/HeartBroken";
 import ElderlyIcon from "@mui/icons-material/Elderly";
 import SickIcon from "@mui/icons-material/Sick";
-export default function AlocationProgramsCard() {
+export default function AlocationProgramsCard({patientData}) {
   const shiftSize = 7;
   const setPrograms = [
     {
@@ -151,7 +151,7 @@ export default function AlocationProgramsCard() {
             fontSize: "24px",
           }}
         >
-          <CountUp end={3240}></CountUp>
+          <CountUp end={137}></CountUp>
         </Typography>
         <Typography
           sx={{

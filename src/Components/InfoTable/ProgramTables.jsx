@@ -104,7 +104,7 @@ function Row(props) {
                     item.length > 0 ? (
                       item.slice(0, 3).map((historyRow) => (
                         <TableRow key={historyRow?.patientId}>
-                          <TableCell align="center" component="th" scope="row">
+                          <TableCell align="left" component="th" scope="row">
                             {historyRow?.attendanceId}
                           </TableCell>
                           <TableCell align="center">

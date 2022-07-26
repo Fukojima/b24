@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Card, Typography, styled, Box } from "@mui/material";
+import { Grid,Typography, styled, Box } from "@mui/material";
 import DoubleRadarChart from "../Components/Graphics/DoubleRadarChart";
 import ChangeCard from "../Components/Card/ChangeCard";
 import { AppContext } from "../Context/AppContext";
@@ -9,10 +9,10 @@ import PieGraph from "../Components/Graphics/PieChart";
 import ObesityGraph from "../Components/Graphics/ObesityGraph";
 import AlocationProgramsCard from "../Components/Card/AlocationProgramsCard";
 import AreaGraph from "../Components/Graphics/AreaGraph";
-import statusCard from "../assets/Data/statusCard";
 import VerticalBarChart from "../Components/Graphics/VerticalBarChart";
 import DiabetesGraph from "../Components/Graphics/DiabetesGraph";
 import useHistory from "../service/useHistory";
+import {CircularProgress} from "@mui/material";
 import MainTable from "../Components/InfoTable/MainTable";
 import OneLineGraphic from "../Components/Graphics/ComposedChart";
 import HypertensionGraph from "../Components/Graphics/HypertensionGraph";
@@ -91,20 +91,20 @@ function Programs() {
     // })
 
     history?.map(function (item) {
-      let results = item.admeasurements.filter(function (data) {
-        if (data[0]?.describeVitalAcronym == "P.A.D." && data[0]?.value > 70) {
+       item.admeasurements.filter(function (data) {
+        if (data[0]?.describeVitalAcronym === "P.A.D." && data[0]?.value > 70) {
           hypertensionArray.push(item);
         }
 
-        if (data[0]?.describeVitalAcronym == "GLI" && data[0]?.value > 70) {
+        if (data[0]?.describeVitalAcronym === "GLI" && data[0]?.value > 70) {
           diabetesArray.push(item);
         }
-        if (data[0]?.describeVitalAcronym == "IMC") {
+        if (data[0]?.describeVitalAcronym === "IMC") {
           obesityArray.push(item);
         }
       });
-      let examsResults = item.exams.filter(function (data) {
-        if (data[0]?.examName == "BETA-HCG" && data[0]?.value > 25) {
+           item.exams.filter(function (data) {
+        if (data[0]?.examName === "BETA-HCG" && data[0]?.value > 25) {
           pregnantArray.push(item);
         }
       });
@@ -259,7 +259,7 @@ function Programs() {
                   color: "#6462E8",
                 }}
               >
-                Alocação demográfica
+                Alocação Demográfica
               </Typography>
               <VerticalBarChart data={diabetes} />
             </StyledContainer>
@@ -472,6 +472,17 @@ serviços"
   };
 
   return (
+    
+    <>
+      {history.length === 0 ? (
+<Box sx={{width:"100%", height:500,
+alignItems:"center", justifyContent:"center", justifyItems:"center", display:"flex" }}>
+
+                
+            <CircularProgress size={100} />
+
+
+          </Box>):(
     <ContentContainer>
       <Grid container spacing={2}>
         <Grid
@@ -548,7 +559,8 @@ serviços"
           <>{<ProgramScreens />}</>
         )}
       </Grid>
-    </ContentContainer>
+    </ContentContainer>)}
+    </>
   );
 }
 

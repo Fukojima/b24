@@ -26,7 +26,7 @@ const columns = [
   },
   {
     id: "programa",
-    label: "Elegibilidade",
+    label: "Elegíveis",
     minWidth: 100,
     align: "right",
   },

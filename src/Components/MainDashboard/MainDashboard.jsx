@@ -8,6 +8,7 @@ import { CalendarMonth } from "@mui/icons-material";
 import { pink, blue, green, orange } from "@mui/material/colors";
 import InfoTable from "../InfoTable/InfoTable";
 import InfoCard from "../Card/InfoCard";
+import useAttendances from "../../service/useAttendances"
 const StyledContainer = styled(Box)({
   backgroundColor: "white",
   padding: "10px",
@@ -15,7 +16,34 @@ const StyledContainer = styled(Box)({
   borderRadius: 5,
   flexGrow: 1,
 });
+
 export default function MainDashboard() {
+
+  const [attendances, setAttendances] = React.useState([]);
+  async function Attendances() {
+    const { getAttendances } = useAttendances();
+    let detailsResponse = [];
+
+    detailsResponse = await getAttendances();
+    setAttendances(detailsResponse);
+  }
+
+
+
+    const totalMasc = attendances.filter(function(item) {
+      if (item.gender =="M"){
+        return item
+      }
+    })
+
+    const  totalFem = attendances.filter(function(item) {
+      if (item.gender =="F"){
+        return item
+      }
+    })
+
+
+  React.useEffect(() => {Attendances()}, []);
   return (
     <>
       <Box
@@ -44,7 +72,7 @@ export default function MainDashboard() {
               <ValuationCard
                 icon={<HowToRegIcon />}
                 title={"Atendimentos"}
-                value={"65"}
+                value={attendances.length}
                 color={green[200]}
               />
             </Grid>
@@ -52,7 +80,7 @@ export default function MainDashboard() {
               <ValuationCard
                 icon={<MaleIcon sx={{ color: "White" }} />}
                 title={"Pacientes Masc"}
-                value={"40"}
+                value={totalMasc.length}
                 color={blue[200]}
               />
             </Grid>
@@ -60,7 +88,7 @@ export default function MainDashboard() {
               <ValuationCard
                 icon={<FemaleIcon sx={{ color: "white" }} />}
                 title={"Pacientes Fem"}
-                value={"25"}
+                value={totalFem.length}
                 color={pink[200]}
                 up={true}
               />
@@ -84,7 +112,7 @@ export default function MainDashboard() {
             <Grid item xs={8}>
               <StyledContainer>
                 <Typography></Typography>
-                <InfoTable />
+                <InfoTable rows={attendances} />
               </StyledContainer>
             </Grid>
             <Grid item xs={4}>
