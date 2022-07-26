@@ -16,19 +16,19 @@ const columns = [
     id: "paciente",
     label: "Paciente",
     minWidth: 100,
-    align: "right",
+    align: "left",
   },
   {
     id: "carteira",
     label: "Carteira",
     minWidth: 100,
-    align: "right",
+    align: "left",
   },
   {
     id: "programa",
     label: "Elegíveis",
     minWidth: 100,
-    align: "right",
+    align: "left",
   },
 ];
 
@@ -88,7 +88,7 @@ export default function MainTable() {
                   <TableCell
                     sx={{ backgroundColor: "#6462E8", color: "white" }}
                     key={column.id}
-                    align="center"
+                    align="left"
                     style={{ minWidth: column.minWidth }}
                   >
                     {column.label}
@@ -104,7 +104,7 @@ export default function MainTable() {
                     <TableRow
                       hover
                       role="checkbox"
-                      align="center"
+                      align="left"
                       tabIndex={-1}
                       sx={{
                         backgroundColor: "white",
@@ -114,7 +114,7 @@ export default function MainTable() {
                       {columns.map((column) => {
                         const value = row[column.id];
                         return (
-                          <TableCell key={column.id} align="center">
+                          <TableCell key={column.id} align="left">
                             {column.format && typeof value === "number"
                               ? column.format(value)
                               : value}

@@ -80,7 +80,7 @@ export default function InfoTable({rows}) {
                 {columns.map((column) => (
                   <TableCell
                     key={column.id}
-                    align="center"
+                    align="left"
                     style={{ minWidth: column.minWidth }}
                   >
                     {column.label}
@@ -95,7 +95,7 @@ export default function InfoTable({rows}) {
                     <TableRow
                       hover
                       role="checkbox"
-                      align="center"
+                      align="left"
                       sx={{
                         backgroundColor: "white",
                       }}
@@ -106,7 +106,7 @@ export default function InfoTable({rows}) {
                         const value = row[column.id];
                        console.log("value", value[-1])
                         return (
-                          <TableCell key={column.id} align="center">
+                          <TableCell key={column.id} align="left">
                                    {value.includes("2022")
                               ?  format(new Date(value), "dd/MM/yyyy")
                               : value}

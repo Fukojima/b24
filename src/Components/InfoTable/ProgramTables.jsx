@@ -314,7 +314,7 @@ export default function ProgramsTables({ data }) {
                 />
                 <TableCell
                   sx={{ backgroundColor: "#6462E8", color: "white" }}
-                  align="center"
+                  align="left"
                 >
                   Paciente{" "}
                 </TableCell>
