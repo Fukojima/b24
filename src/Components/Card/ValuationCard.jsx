@@ -40,7 +40,7 @@ export default function ValuationCard({ title, value, color, icon }) {
             fontFamily: "Rubik",
             fontSize: "1.8rem",
             fontWeight: "bold",
-            textAlign: "right",
+            textAlign: "center",
           }}
         >
           {Number(value) ? <CountUp end={value} duration={2} /> : value}

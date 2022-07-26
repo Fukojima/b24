@@ -29,24 +29,30 @@ export default function InfoCard() {
             display: "flex",
           }}
         >
-          <Typography color="text.secondary">
+          <Grid container>
+            {" "}
+      {" "}
+            <Grid xs={6}>       <Typography color="text.secondary">
             {!!item?.service &&
               item.service.charAt(0).toUpperCase() +
                 item.service.slice(1, item.service.length).toLowerCase()}
             <b> : </b>
-          </Typography>
-          <Grid xs={2}>
-            <Typography
-              color="text.secondary"
-              sx={{
-                marginLeft: "5px",
-                display: "inline-block",
-                fontWeight: "bold",
-              }}
-            >
-              {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
-            </Typography>
+          </Typography></Grid>
+            <Grid item xs={2}>
+              {" "}
+              <Typography
+                color="text.secondary"
+                sx={{
+                  marginLeft: "5px",
+                  display: "inline-block",
+                  fontWeight: "bold",
+                }}
+              >
+                {item.quantity < 10 ? `0${item.quantity}` : item.quantity}
+              </Typography>
+            </Grid>
           </Grid>
+   
         </Box>
       </>
     );

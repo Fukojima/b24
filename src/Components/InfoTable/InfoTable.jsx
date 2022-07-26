@@ -18,15 +18,15 @@ const columns = [
     id: "nmPatient",
     label: "Paciente",
     minWidth: 100,
-    align: "right",
+    align: "left",
   },
   {
     id: "service",
     label: "Serviço",
     minWidth: 100,
-    align: "right",
+    align: "left",
   },
-  { id: "tpAttendance", label: "Atendimento", minWidth: 100 },
+  { id: "tpAttendance", label: "Atendimento", minWidth: 100, align:"center" },
   // {
   //   id: `nmEmployee`,
   //   label: "Prestador",
@@ -37,7 +37,7 @@ const columns = [
     id: "dtAttendance",
     label: "Data Atendimento",
     minWidth: 100,
-    align: "right",
+    align: "center",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function InfoTable({rows}) {
                         const value = row[column.id];
                        console.log("value", value[-1])
                         return (
-                          <TableCell key={column.id} align="left">
+                          <TableCell key={column.id} align={column.align}>
                                    {value.includes("2022")
                               ?  format(new Date(value), "dd/MM/yyyy")
                               : value}
