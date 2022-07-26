@@ -104,10 +104,10 @@ export default function InfoTable({rows}) {
                     >
                       {columns.map((column) => {
                         const value = row[column.id];
-                       
+                       console.log("value", value[-1])
                         return (
                           <TableCell key={column.id} align="center">
-                                   {column.format && typeof value === "date"
+                                   {value.includes("2022")
                               ?  format(new Date(value), "dd/MM/yyyy")
                               : value}
                           </TableCell>

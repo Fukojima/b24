@@ -473,8 +473,13 @@ serviços"
 
   return (
     
+<<<<<<< HEAD
     <>
       {history.length === 0 ? (
+=======
+    
+      {history.length == 0 ? (
+>>>>>>> 73e079879d3bfeadcdb9d76f68bafbadd31d1991
 <Box sx={{width:"100%", height:500,
 alignItems:"center", justifyContent:"center", justifyItems:"center", display:"flex" }}>
 
