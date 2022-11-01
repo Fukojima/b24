@@ -2,13 +2,12 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { Grid, Box, Typography, styled } from "@mui/material";
+import { Grid, Box, Typography, styled, Button } from "@mui/material";
 import Programs from "../../Pages/Programs";
 import { ReactComponent as Logo } from "../../assets/T+saude.svg";
-import PopupConnection from "../PopupConnection/PopupConnection";
-import ProfileMenu from "../../Components/ProfileMenu/ProfileMenu";
 import MainDashboard from "../../Components/MainDashboard/MainDashboard";
 import Robots from "../../Pages/Robots";
+import BasicModal from "../Utils/BasicModal";
 
 const ContentContainer = styled(Box)({
   width: "100%",
@@ -36,6 +35,13 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+};
+
+const styles = {
+  tab: {
+      minWidth: 200, // a number of your choice
+      width: 200, // a number of your choice
+  }
 };
 
 function a11yProps(index) {}
@@ -106,13 +112,18 @@ export default function BasicTabs() {
         >
           <Box>
             <Logo width={150} height={40} />
+            
+          </Box>
+         
+          <Box>
+            <Tabs  value={value} onChange={handleChange}>
+              <Tab style={{marginRight:'20px'}}  label="Atendimentos" {...a11yProps(0)} />
+              <Tab  style={{marginRight:'20px'}} label="Programas" {...a11yProps(1)} />
+              <Tab  style={{marginRight:'20px'}} label="Mapeamento de Comorbidades" {...a11yProps(2)} />
+            </Tabs>
           </Box>
           <Box>
-            <Tabs value={value} onChange={handleChange}>
-              <Tab label="Atendimentos" {...a11yProps(0)} />
-              <Tab label="Programas" {...a11yProps(1)} />
-              <Tab label="Mapeamento de Comorbidades" {...a11yProps(2)} />
-            </Tabs>
+            <BasicModal/>
           </Box>
         </Box>
         {/* <Grid container>

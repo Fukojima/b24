@@ -2,11 +2,7 @@ import * as React from "react";
 import { Typography, Card, Grid, Box, Divider } from "@mui/material";
 
 // import icons
-import diabetesIcon from "../../assets/blood-test.png";
-import hypertensionIcon from "../../assets/hypertension.png";
-import thirdAgeIcon from "../../assets/walker.png";
-import obesityIcon from "../../assets/overweight.png";
-import pregnantIcon from "../../assets/pregnant.png";
+
 import CountUp from "react-countup";
 import FaceIcon from "@mui/icons-material/Face";
 import PregnantWomanIcon from "@mui/icons-material/PregnantWoman";
