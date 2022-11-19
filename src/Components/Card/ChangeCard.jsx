@@ -29,7 +29,7 @@ export default function ChangeCard() {
         </Typography>
 
         <Typography sx={{ fontSize: 14, color: "#6462E8" }} gutterBottom>
-          Ultima atualização: 20/07/2022 às 15:42
+          Ultima atualização: 08/11/2022 às 15:42
         </Typography>
       </Box>
       <Box

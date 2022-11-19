@@ -97,7 +97,7 @@ export default function MainDashboard() {
               <ValuationCard
                 icon={<CalendarMonth />}
                 title={"Período"}
-                value={"Julho"}
+                value={"Novembro"}
                 color={orange[200]}
               />
             </Grid>

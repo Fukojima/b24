@@ -113,10 +113,6 @@ function Programs() {
     setHypertension(hypertensionArray);
     setDiabetes(diabetesArray);
     setPregnant(pregnantArray);
-    console.log("obesity", obesityArray);
-    console.log("hypertension", hypertensionArray);
-    console.log("diabetes", diabetesArray);
-    console.log("pregnant", pregnantArray);
   }, [selectedOption]);
 
   const ProgramScreens = (value) => {

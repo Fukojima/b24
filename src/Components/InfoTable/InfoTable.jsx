@@ -104,7 +104,6 @@ export default function InfoTable({rows}) {
                     >
                       {columns.map((column) => {
                         const value = row[column.id];
-                       console.log("value", value[-1])
                         return (
                           <TableCell key={column.id} align={column.align}>
                                    {value.includes("2022")

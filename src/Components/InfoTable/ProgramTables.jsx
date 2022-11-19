@@ -278,7 +278,6 @@ const rows = [
 ];
 
 export default function ProgramsTables({ data }) {
-  console.log("data", data);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 

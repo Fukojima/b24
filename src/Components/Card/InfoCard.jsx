@@ -21,7 +21,6 @@ export default function InfoCard() {
   }
 
   const services = details?.map((item) => {
-    console.log(item.quantity);
     return (
       <>
         <Box
@@ -87,7 +86,7 @@ export default function InfoCard() {
           <Typography sx={{ fontSize: 14, color: "#6462E8" }} gutterBottom>
             Última atualização:{" "}
             <Typography component="span" variant="inherit" sx={{}}>
-              10/01/2022 às 18:42
+              10/11/2022 às 18:42
             </Typography>
           </Typography>
         </Box>

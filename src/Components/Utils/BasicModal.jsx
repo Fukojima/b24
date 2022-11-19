@@ -4,6 +4,7 @@ import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import { Typography, Card, Grid, Box, Divider, FormControl, InputLabel, Input, FormHelperText, Button, CircularProgress } from "@mui/material";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
+import { format, compareAsc } from 'date-fns'
 import useCadSUS from "../../service/useCadSUS";
 import SearchOffIcon from '@mui/icons-material/SearchOff';
 import CloseIcon from '@mui/icons-material/Close';
@@ -51,7 +52,14 @@ export default function BasicModal() {
     const { getCADSUS } = useCadSUS();
     setOpen(false)
     setOpenModal(true)
- 
+    if (docId.length == 0  ){
+      setSuccess(false)
+      setMessage('Insira um valor.')
+      return
+     }else if(docId.length < 15 ){
+      setSuccess(false)
+      setMessage('Não há registro desse CSN.')
+     }
     try {
       detailsResponse = await getCADSUS(docId);
     } catch (e) {
@@ -62,9 +70,11 @@ export default function BasicModal() {
          setMessage('Sucesso')
          setSuccess(true)
          setResponse(detailsResponse.response)
+         console.log()
+
     }else{
       setSuccess(false)
-      setMessage(detailsResponse?.response)
+      setMessage('Não há registro desse CSN.')
     }
 
     
@@ -84,7 +94,7 @@ export default function BasicModal() {
 
         <Box sx={style}>
         <Grid container>
-<Grid xs={8}> <Typography sx={{ fontWeight: "bold"}} >      Consulta CADSUS    
+<Grid xs={8}> <Typography sx={{ fontWeight: "bold"}} >      Consulta SUS/CNS   
             </Typography></Grid>
             <Grid xs={3}></Grid>
 <Grid xs={1}><Button onClick={handleClose}><CloseIcon/></Button></Grid>
@@ -95,7 +105,7 @@ export default function BasicModal() {
             <TextField
               onChange={onTextChange}
               value={textValue}
-              label={"Insira seu cns/cpf..."} //optional
+              label={"Insira seu cns..."} //optional
             />
 
           </Box>
@@ -131,7 +141,7 @@ export default function BasicModal() {
           <Box sx={styleModal}>
            
               <Grid container>
-<Grid xs={8}> <Typography sx={{ fontWeight: "bold"}} >      Consulta CADSUS    
+<Grid xs={8}> <Typography sx={{ fontWeight: "bold"}} >      Consulta SUS/CNS   
             </Typography></Grid>
             <Grid xs={3}></Grid>
 <Grid xs={1}><Button onClick={handleCloseModal}><CloseIcon/></Button></Grid>
@@ -153,7 +163,10 @@ export default function BasicModal() {
               (<>
               <Box>
                 <Grid container>
-                <Grid xs={8}>
+                <Grid xs={5} sx={{marginLeft:0}}>
+                <Typography sx={{ fontSize: 15, fontWeight: "bold", marginBottom:1 }}>
+                Dados Pessoais: 
+                </Typography>
                 <Typography sx={{ fontSize: 14, fontWeight: "bold", }}>
                  Nome:
                 </Typography>
@@ -164,7 +177,19 @@ export default function BasicModal() {
                  Data de nascimento:
                 </Typography>
                 <Typography>
-                  {response.birth_date}
+                  {response.birth_date?.substring(6,8) + '/' + response.birth_date?.substring(4,6) + '/' + response.birth_date?.substring(0,4)}
+                </Typography>
+                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
+            Nome Mãe:
+                </Typography>
+                <Typography>
+                  {response.mother_name}
+                </Typography>
+                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
+            Nome Pai:
+                </Typography>
+                <Typography>
+                  {response.dad_name || 'Não informado'}
                 </Typography>
                 <Typography sx={{ fontSize: 14, fontWeight: "bold", marginTop:2}}>
                  Sexo:
@@ -176,30 +201,16 @@ export default function BasicModal() {
                  Etnia:
                 </Typography>
                 <Typography>
-                  {response.ethnicity}
+                  {response.ethnicity || 'Não informado'}
                 </Typography>
-                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
-                 CNS:
-                </Typography>
-                <Typography>
-                  {response.sus_card}
-                </Typography>
-                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
-                 Tipo Sanguineo:
-                </Typography>
-                <Typography>
-                  {response.type_blood}
-                </Typography>
-                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
-            Nome mãe
-                </Typography>
-                <Typography>
-                  {response.mother_name}
-                </Typography>
+                
                 </Grid>
+                <Divider orientation="vertical" flexItem />
 
-
-                <Grid xs={4}>
+                <Grid sx={{marginLeft:2}} xs={3}>
+                <Typography sx={{ fontSize: 15, fontWeight: "bold", marginBottom:1 }}>
+                  Contato: 
+                </Typography>
                 <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
                  Rua:
                 </Typography>
@@ -224,6 +235,42 @@ export default function BasicModal() {
                 <Typography>
                 {response.contact?.cep}
                 </Typography>
+                </Grid>
+                <Divider orientation="vertical" flexItem />
+                <Grid sx={{marginLeft:2}} xs={2}>
+                <Typography sx={{ fontSize: 15, fontWeight: "bold", marginBottom:1 }}>
+                 Documentos: 
+                </Typography>
+                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
+                 RG:
+                </Typography>
+                <Typography>
+                  {response.ident_national || 'Não informado'}
+                </Typography>
+                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
+                 CNS:
+                </Typography>
+                <Typography>
+                  {response.sus_card}
+                </Typography>
+                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
+                 CPF:
+                </Typography>
+                <Typography>
+                  {response.physic_national?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g,"\$1.\$2.\$3\-\$4") || 'Não informado'}
+                </Typography>
+                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
+                 PIS/PASEP:
+                </Typography>
+                <Typography>
+                  {response.pis_pasep || 'Não informado'}
+                </Typography>
+                <Typography sx={{ fontSize: 14, fontWeight: "bold",marginTop:2 }}>
+                 CTPS:
+                </Typography>
+                <Typography>
+                  {response.ctps || 'Não informado'} 
+                </Typography>      
                 </Grid>
                 </Grid>
         
