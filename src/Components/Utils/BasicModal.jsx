@@ -83,7 +83,7 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleOpen}>Consulta CADSUS<PersonSearchIcon /> </Button>
+      <Button variant="outlined" onClick={handleOpen}>Consulta SUS/CNS  <PersonSearchIcon /> </Button>
       <Modal
         sx={{ borderRadius: '10%' }}
         open={open}
